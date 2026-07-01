@@ -1,5 +1,6 @@
 import { ArrowUpRight } from './icons/ArrowUpRight'
 import { BottomBrackets, SectionDivider } from './Scaffold'
+import logoSrc from '../assets/image.png'
 
 export function Footer() {
   return (
@@ -52,12 +53,10 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <a
                 href="#beranda"
-                className="flex h-8 w-8 items-center justify-center bg-accent/10"
+                className="flex items-center justify-center"
                 aria-label="SMK YADIKA SOREANG"
               >
-                <span className="font-display text-sm font-bold text-accent">
-                  y
-                </span>
+                <img src={logoSrc} alt="SMK YADIKA SOREANG" className="h-6 w-auto" />
               </a>
               <span className="font-body text-xs text-muted">
                 © 2026 SMK YADIKA SOREANG

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { ArrowUpRight } from './icons/ArrowUpRight'
+import logoSrc from '../assets/image.png'
 
 const navLinks = [
   { label: 'Beranda', to: '/' },
@@ -14,10 +15,10 @@ export function Navbar() {
     <nav className="fixed top-4 z-50 flex w-full items-center justify-between px-6 lg:px-12">
       <NavLink
         to="/"
-        className="glass-nav flex h-10 w-10 items-center justify-center rounded"
+        className="glass-nav flex items-center justify-center rounded px-2 py-1"
         aria-label="SMK YADIKA SOREANG"
       >
-        <span className="font-display text-lg font-bold text-copy">y</span>
+        <img src={logoSrc} alt="SMK YADIKA SOREANG" className="h-8 w-auto" />
       </NavLink>
 
       <div className="glass-nav hidden items-center px-0.5 md:flex">
