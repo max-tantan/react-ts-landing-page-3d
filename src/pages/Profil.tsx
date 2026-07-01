@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { CornerBrackets, SectionDivider } from '../components/Scaffold'
+import CircularGallery from '../components/CircularGallery'
 import { ArrowUpRight } from '../components/icons/ArrowUpRight'
 
 const fadeUp = (delay: number) => ({
@@ -111,6 +112,10 @@ export function Profil() {
           </Link>
         </motion.div>
       </div>
+
+      <section className="h-[600px] w-full">
+        <CircularGallery />
+      </section>
 
       <SectionDivider />
     </section>
