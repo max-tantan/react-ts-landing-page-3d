@@ -1,91 +1,58 @@
 import { motion } from 'framer-motion'
 import { BlurText } from './BlurText'
 import { FadingVideo } from './FadingVideo'
-import { Navbar } from './Navbar'
 import { ArrowUpRight } from './icons/ArrowUpRight'
 import { Play } from './icons/Play'
+import { CornerBrackets, SectionDivider } from './Scaffold'
 
 const HERO_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4'
 
-const motionInitial = {
-  filter: 'blur(10px)',
-  opacity: 0,
-  y: 20,
-}
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: 'easeOut' as const, delay },
+})
 
-const partners = ['BNSP', 'Industri', 'Kompetensi', 'Inovasi', 'Kolaborasi']
-
-function ClockIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      className="h-7 w-7 text-white"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function GlobeIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      className="h-7 w-7 text-white"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-    </svg>
-  )
-}
+const stats = [
+  { value: '1200+', label: 'Siswa Aktif' },
+  { value: '15+', label: 'Tahun Berdiri' },
+  { value: '95%', label: 'Penyerapan Kerja' },
+  { value: '12', label: 'Mitra Industri' },
+]
 
 export function Hero() {
   return (
     <section
       id="beranda"
-      className="relative flex min-h-screen flex-col bg-black"
+      className="relative flex min-h-screen flex-col bg-base"
     >
       <FadingVideo
         src={HERO_VIDEO}
-        className="absolute left-1/2 top-0 z-0 -translate-x-1/2 object-cover object-top"
-        style={{ width: '120%', height: '120%' }}
+        className="absolute inset-0 z-0 object-cover"
+        style={{ width: '100%', height: '100%' }}
       />
 
-      <div className="relative z-10 flex min-h-screen flex-col">
-        <Navbar />
+      <div className="absolute inset-0 z-[1] bg-base/70" />
 
-        <div className="flex flex-1 flex-col items-center justify-center px-4 pt-24">
-          <motion.div
-            initial={motionInitial}
-            animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
-            className="liquid-glass flex items-center gap-2 rounded-full"
-          >
-            <span className="rounded bg-white px-3 py-1 font-body text-xs font-semibold text-black">
-              Baru
-            </span>
-            <span className="pr-3 font-body text-sm text-white/90">
-              Penerimaan Peserta Didik Baru 2026/2027
+      <div className="relative z-10 flex min-h-screen flex-col">
+        <div className="relative flex flex-1 flex-col items-center justify-center px-6 pt-32">
+          <CornerBrackets className="absolute top-24 left-0 right-0" />
+
+          <motion.div {...fadeUp(0.3)}>
+            <span className="inline-block font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70">
+              // PPDB 2026/2027
             </span>
           </motion.div>
 
           <BlurText
             text="Membangun Generasi Siap Kerja dan Siap Dunia"
-            className="mt-6 max-w-2xl justify-center font-heading text-6xl leading-[0.8] tracking-[-4px] text-white italic md:text-7xl lg:text-[5.5rem]"
+            className="mt-4 max-w-4xl justify-center font-display text-[clamp(2.25rem,7vw,5.5rem)] leading-[0.85] tracking-[-3px] text-copy"
           />
 
           <motion.p
-            initial={motionInitial}
-            animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.8 }}
-            className="mt-4 max-w-2xl text-center font-body text-sm font-light leading-tight text-white md:text-base"
+            {...fadeUp(0.7)}
+            className="mt-4 max-w-lg text-center font-body text-sm font-light leading-relaxed text-muted"
           >
             SMK YADIKA SOREANG menghadirkan pendidikan kejuruan berkualitas
             dengan program unggulan, fasilitas modern, dan kemitraan industri
@@ -93,21 +60,19 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={motionInitial}
-            animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 1.1 }}
-            className="mt-6 flex items-center gap-6"
+            {...fadeUp(0.9)}
+            className="mt-8 flex items-center gap-6"
           >
             <a
               href="#daftar"
-              className="liquid-glass-strong flex items-center gap-2 rounded-full px-5 py-2.5 font-body text-sm font-medium text-white"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
             >
               Daftar Sekarang
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
               href="#profil"
-              className="flex items-center gap-2 font-body text-sm font-medium text-white"
+              className="inline-flex items-center gap-2 font-body text-sm text-copy/60 transition-colors hover:text-copy/90"
             >
               <Play className="h-4 w-4" />
               Jelajahi Sekolah
@@ -115,45 +80,29 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={motionInitial}
-            animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 1.3 }}
-            className="mt-8 flex flex-wrap items-stretch justify-center gap-4"
+            {...fadeUp(1.1)}
+            className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3"
           >
-            <div className="liquid-glass w-[220px] rounded-[1.25rem] p-5">
-              <ClockIcon />
-              <p className="mt-4 font-heading text-4xl leading-none tracking-[-1px] text-white italic">
-                1200+
-              </p>
-              <p className="mt-2 font-body text-xs font-light text-white">
-                Siswa Aktif
-              </p>
-            </div>
-            <div className="liquid-glass w-[220px] rounded-[1.25rem] p-5">
-              <GlobeIcon />
-              <p className="mt-4 font-heading text-4xl leading-none tracking-[-1px] text-white italic">
-                15+
-              </p>
-              <p className="mt-2 font-body text-xs font-light text-white">
-                Tahun Berdiri
-              </p>
-            </div>
+            {stats.map((stat) => (
+              <div key={stat.label} className="flex items-baseline gap-2">
+                <span className="font-display text-3xl font-bold tracking-tight text-copy">
+                  {stat.value}
+                </span>
+                <span className="font-body text-xs tracking-wide text-muted">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div {...fadeUp(1.3)} className="mt-6">
+            <span className="tool-tag">Bermitra dengan BNSP & 12+ mitra industri</span>
           </motion.div>
         </div>
 
-        <motion.div
-          initial={motionInitial}
-          animate={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 1.4 }}
-          className="flex flex-col items-center gap-4 pb-8"
-        >
-          <span className="liquid-glass rounded-full px-3.5 py-1 font-body text-xs font-medium text-white">
-            Bermitra dengan industri dan lembaga sertifikasi
-          </span>
-          <p className="font-heading text-2xl tracking-tight text-white italic md:text-3xl">
-            {partners.join(' · ')}
-          </p>
-        </motion.div>
+        <div className="relative z-10">
+          <SectionDivider />
+        </div>
       </div>
     </section>
   )

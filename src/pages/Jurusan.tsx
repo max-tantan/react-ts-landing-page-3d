@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from './icons/ArrowUpRight'
-import { CornerBrackets, SectionDivider } from './Scaffold'
+import { ArrowUpRight } from '../components/icons/ArrowUpRight'
+import { CornerBrackets, SectionDivider } from '../components/Scaffold'
 
 type ProgramCard = {
   title: string
@@ -85,26 +85,20 @@ function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
           {body}
         </p>
         <div className="mt-auto pt-6">
-          <a
-            href="#"
-            className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent transition-colors hover:text-sky-400"
-          >
+          <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent">
             Pelajari selengkapnya
             <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
+          </span>
         </div>
       </div>
     </motion.article>
   )
 }
 
-export function Programs() {
+export function Jurusan() {
   return (
-    <section
-      id="jurusan"
-      className="relative bg-base"
-    >
-      <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
+    <section className="bg-base pt-28">
+      <div className="px-6 pb-16 md:px-12 lg:px-16">
         <CornerBrackets className="relative mb-16 h-6" />
 
         <header>
@@ -118,9 +112,9 @@ export function Programs() {
             {...fadeUp(0.2)}
             className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
           >
-            Pendidikan
+            Pilih jalur
             <br />
-            bermutu
+            masa depanmu
           </motion.h2>
         </header>
 

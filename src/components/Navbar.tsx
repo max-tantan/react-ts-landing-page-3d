@@ -1,44 +1,57 @@
+import { NavLink } from 'react-router-dom'
 import { ArrowUpRight } from './icons/ArrowUpRight'
 
 const navLinks = [
-  { label: 'Beranda', href: '#beranda' },
-  { label: 'Profil', href: '#profil' },
-  { label: 'Jurusan', href: '#jurusan' },
-  { label: 'Fasilitas', href: '#fasilitas' },
-  { label: 'Berita', href: '#berita' },
+  { label: 'Beranda', to: '/' },
+  { label: 'Profil', to: '/profil' },
+  { label: 'Jurusan', to: '/jurusan' },
+  { label: 'Fasilitas', to: '/fasilitas' },
+  { label: 'Berita', to: '/berita' },
 ]
 
 export function Navbar() {
   return (
-    <nav className="fixed top-4 z-50 flex w-full items-center justify-between px-8 lg:px-16">
-      <a
-        href="#beranda"
-        className="liquid-glass flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+    <nav className="fixed top-4 z-50 flex w-full items-center justify-between px-6 lg:px-12">
+      <NavLink
+        to="/"
+        className="glass-nav flex h-10 w-10 items-center justify-center rounded"
         aria-label="SMK YADIKA SOREANG"
       >
-        <span className="font-heading text-xl italic text-white">y</span>
-      </a>
+        <span className="font-display text-lg font-bold text-copy">y</span>
+      </NavLink>
 
-      <div className="liquid-glass hidden items-center px-1.5 py-1.5 md:flex">
+      <div className="glass-nav hidden items-center px-0.5 md:flex">
         {navLinks.map((link) => (
-          <a
+          <NavLink
             key={link.label}
-            href={link.href}
-            className="px-3 py-2 font-body text-sm font-medium text-white/90"
+            to={link.to}
+            end={link.to === '/'}
+            className={({ isActive }) =>
+              `relative px-3 py-2 font-body text-sm font-medium transition-colors ${
+                isActive ? 'text-accent' : 'text-copy/80'
+              }`
+            }
           >
-            {link.label}
-          </a>
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <span className="absolute bottom-0 left-3 right-3 h-px bg-accent" />
+                )}
+                {link.label}
+              </>
+            )}
+          </NavLink>
         ))}
         <a
           href="#daftar"
-          className="flex items-center gap-1.5 rounded bg-white px-4 py-2 font-body text-sm font-medium whitespace-nowrap text-black"
+          className="mr-0.5 flex items-center gap-1.5 bg-accent px-4 py-2 font-body text-sm font-semibold text-base"
         >
           Daftar Sekarang
           <ArrowUpRight className="h-4 w-4" />
         </a>
       </div>
 
-      <div className="hidden h-12 w-12 shrink-0 md:block" aria-hidden="true" />
+      <div className="hidden h-10 w-10 md:block" aria-hidden="true" />
     </nav>
   )
 }
