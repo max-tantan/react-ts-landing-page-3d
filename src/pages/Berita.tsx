@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider } from '../components/Scaffold'
+import { CornerBrackets, SectionDivider } from '../components'
+import { fadeUp } from '../hooks/useFadeUp'
 
 type Student = {
   name: string
@@ -71,12 +72,6 @@ const news: NewsItem[] = [
     image: 'https://picsum.photos/seed/workshop-akuntansi/600/400',
   },
 ]
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' as const, delay },
-})
 
 function StudentCard({ student, index }: { student: Student; index: number }) {
   return (

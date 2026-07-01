@@ -1,14 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { CornerBrackets, SectionDivider } from '../components/Scaffold'
-import CircularGallery from '../components/CircularGallery'
-import { ArrowUpRight } from '../components/icons/ArrowUpRight'
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' as const, delay },
-})
+import { CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery } from '../components'
+import { fadeUp } from '../hooks/useFadeUp'
 
 const sejarah = [
   {

@@ -1,75 +1,65 @@
-# React + TypeScript + Vite
+# SMK YADIKA SOREANG — Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website profil sekolah untuk SMK YADIKA SOREANG — sebuah sekolah kejuruan di Soreang, Jawa Barat. Dibangun dengan pendekatan *workshop aesthetic*: hangat, terukur, dan berorientasi pada keahlian.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Teknologi | Penggunaan |
+|-----------|------------|
+| **React 19** | UI framework |
+| **TypeScript 6** | Type safety |
+| **Vite 8** | Build tool |
+| **Tailwind CSS 4** | Utility styling |
+| **Framer Motion 12** | Animasi scroll-reveal |
+| **React Router 7** | Routing |
+| **OGL** | WebGL gallery (CircularGallery) |
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev      # dev server di http://localhost:5173
+npm run build    # build produksi ke dist/
+npm run lint     # ESLint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Struktur
 
 ```
+src/
+├── assets/          # static assets (gambar, dll.)
+├── components/      # shared components
+│   ├── icons/       # icon SVG components
+│   └── index.ts     # barrel export
+├── hooks/           # custom hooks (useFadeUp, dll.)
+├── pages/           # halaman routing
+│   ├── Beranda.tsx
+│   ├── Profil.tsx
+│   ├── Jurusan.tsx
+│   ├── Fasilitas.tsx
+│   └── Berita.tsx
+├── types/           # shared TypeScript types
+│   ├── program.ts
+│   └── index.ts
+├── App.tsx          # routing entry
+├── index.css        # tailwind + design tokens
+└── main.tsx         # app entry
+```
+
+## Design
+
+Lihat [`DESIGN.md`](./DESIGN.md) untuk dokumentasi lengkap filosofi desain, token sistem (warna, tipografi, layout), dan sistem komponen.
+
+### Theme
+
+- **Base**: `#161310` (warm dark, seperti meja kerja)
+- **Surface**: `#2C2721`
+- **Copy**: `#F5EDE0` (off-white hangat)
+- **Accent**: `#0284C7` (sky blue)
+- **Muted**: `#78716C`
+
+### Fonts
+
+- **Display**: Sora 700
+- **Body**: Space Grotesk 300–500
+- **Mono**: JetBrains Mono 400

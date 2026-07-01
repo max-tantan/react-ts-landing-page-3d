@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiVuedotjs } from 'react-icons/si'
-import { Hero } from '../components/Hero'
-import { CornerBrackets, SectionDivider } from '../components/Scaffold'
-import { ArrowUpRight } from '../components/icons/ArrowUpRight'
-import { LogoLoop } from '../components/LogoLoop'
+import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop } from '../components'
+import { fadeUp } from '../hooks/useFadeUp'
 
 const reasons = [
   {
@@ -33,12 +31,6 @@ const partnerLogos = [
   { node: <span className="text-copy/60"><SiNodedotjs /></span>, title: 'Node.js', href: 'https://nodejs.org' },
   { node: <span className="text-copy/60"><SiVuedotjs /></span>, title: 'Vue.js', href: 'https://vuejs.org' },
 ]
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' as const, delay },
-})
 
 export function Beranda() {
   return (

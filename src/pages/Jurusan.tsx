@@ -1,14 +1,7 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from '../components/icons/ArrowUpRight'
-import { CornerBrackets, SectionDivider } from '../components/Scaffold'
-
-type ProgramCard = {
-  title: string
-  body: string
-  tags: string[]
-  code: string
-  icon: React.ReactNode
-}
+import { ArrowUpRight, CornerBrackets, SectionDivider } from '../components'
+import type { ProgramCard } from '../types'
+import { fadeUp } from '../hooks/useFadeUp'
 
 const programs: ProgramCard[] = [
   {
@@ -45,12 +38,6 @@ const programs: ProgramCard[] = [
     ),
   },
 ]
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' as const, delay },
-})
 
 function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
   return (

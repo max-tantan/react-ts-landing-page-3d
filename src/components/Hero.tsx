@@ -4,15 +4,10 @@ import { FadingVideo } from './FadingVideo'
 import { ArrowUpRight } from './icons/ArrowUpRight'
 import { Play } from './icons/Play'
 import { CornerBrackets, SectionDivider } from './Scaffold'
+import { fadeUp } from '../hooks/useFadeUp'
 
 const HERO_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4'
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' as const, delay },
-})
 
 const stats = [
   { value: '1200+', label: 'Siswa Aktif' },
@@ -39,7 +34,7 @@ export function Hero() {
         <div className="relative flex flex-1 flex-col items-center justify-center px-6 pt-32">
           <CornerBrackets className="absolute top-24 left-0 right-0" />
 
-          <motion.div {...fadeUp(0.3)}>
+          <motion.div {...fadeUp(0.3, 0.6)}>
             <span className="inline-block font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70">
               // PPDB 2026/2027
             </span>
@@ -51,7 +46,7 @@ export function Hero() {
           />
 
           <motion.p
-            {...fadeUp(0.7)}
+            {...fadeUp(0.7, 0.6)}
             className="mt-4 max-w-lg text-center font-body text-sm font-light leading-relaxed text-muted"
           >
             SMK YADIKA SOREANG menghadirkan pendidikan kejuruan berkualitas
@@ -60,7 +55,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            {...fadeUp(0.9)}
+            {...fadeUp(0.9, 0.6)}
             className="mt-8 flex items-center gap-6"
           >
             <a
@@ -80,7 +75,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            {...fadeUp(1.1)}
+            {...fadeUp(1.1, 0.6)}
             className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3"
           >
             {stats.map((stat) => (
@@ -95,7 +90,7 @@ export function Hero() {
             ))}
           </motion.div>
 
-          <motion.div {...fadeUp(1.3)} className="mt-6">
+          <motion.div {...fadeUp(1.3, 0.6)} className="mt-6">
             <span className="tool-tag">Bermitra dengan BNSP & 12+ mitra industri</span>
           </motion.div>
         </div>

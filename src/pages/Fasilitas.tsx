@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider } from '../components/Scaffold'
+import { CornerBrackets, SectionDivider } from '../components'
+import { fadeUp } from '../hooks/useFadeUp'
 
 const facilities = [
   {
@@ -57,12 +58,6 @@ const facilities = [
     ),
   },
 ]
-
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: 'easeOut' as const, delay },
-})
 
 export function Fasilitas() {
   return (
