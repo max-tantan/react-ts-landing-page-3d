@@ -1,0 +1,97 @@
+{
+  "pplg": {
+    "code": "PPLG",
+    "title": "Pengembangan Perangkat Lunak dan Gim",
+    "subtitle": "sebelumnya RPL",
+    "heroTitle": "Bangun Masa Depan Digital",
+    "sambutan": {
+      "name": "Dr. Ahmad Fauzi, S.Kom., M.T.",
+      "role": "Kepala Program PPLG",
+      "photo": "https://picsum.photos/seed/kaprodi-pplg/400/400",
+      "message": "Selamat datang di jurusan Pengembangan Perangkat Lunak dan Gim. Di era digital ini, kemampuan coding dan pengembangan aplikasi bukan lagi sekadar pilihan — melainkan kebutuhan. Kami tidak hanya mengajarkan bahasa pemrograman, tetapi juga cara berpikir logis, sistematis, dan kreatif dalam menyelesaikan masalah. Saya bangga dengan setiap siswa yang telah menunjukkan karya luar biasa, dan saya yakin generasi berikutnya akan terus mencetak prestasi, baik di tingkat nasional maupun internasional."
+    },
+    "description": [
+      "PPLG (Pengembangan Perangkat Lunak dan Gim) adalah sebuah kompetensi keahlian yang fokus pada rekayasa teknologi digital masa depan. Di jurusan ini, siswa tidak hanya belajar cara mengoperasikan perangkat lunak, melainkan mendalami logika di balik pembuatannya. Mulai dari fondasi dasar pemrograman, algoritma, hingga arsitektur basis data, semuanya dipelajari untuk membentuk pola pikir komputerisasi yang kuat dan solutif dalam memecahkan masalah melalui teknologi.",
+      "Seiring perkembangan ekosistem digital, ruang lingkup PPLG kini mencakup dua pilar besar yang sangat diminati industri, yaitu web/mobile development dan game development. Siswa akan dibekali keahlian merancang aplikasi yang fungsional melalui proses coding, memahami pentingnya kenyamanan pengguna lewat desain UI/UX, hingga menyusun mekanik mekanis sebuah gim interaktif. Kombinasi antara kemampuan teknis pemrograman dan kreativitas visual ini membuat lulusannya mampu menciptakan produk digital yang tidak hanya canggih, tetapi juga menarik secara estetika.",
+      "Dunia kerja bagi lulusan PPLG sangat luas dan terus berkembang pesat, mengingat hampir seluruh sektor industri saat ini membutuhkan transformasi digital. Lulusan jurusan ini dipersiapkan untuk menjadi seorang Frontend/Backend Developer, UI/UX Designer, Game Programmer, hingga Software Quality Assurance. Dengan bekal portofolio proyek yang nyata selama masa pembelajaran, siswa PPLG memiliki kesiapan matang untuk langsung terjun ke industri teknologi, menjadi freelancer mandiri, maupun melanjutkan studi ke jenjang pendidikan tinggi."
+    ],
+    "curriculum": [
+      {
+        "year": 1,
+        "label": "Dasar-Dasar Pemrograman & Logika Komputasi",
+        "items": [
+          "Dasar pemrograman — HTML, CSS, JavaScript, PHP",
+          "Algoritma dan struktur data",
+          "Dasar database — MySQL, SQLite",
+          "Logika komputasi dan problem solving",
+          "Desain grafis dasar — Figma, Canva",
+          "Pengenalan sistem operasi dan jaringan komputer"
+        ]
+      },
+      {
+        "year": 2,
+        "label": "Framework, Mobile & Game Development",
+        "items": [
+          "Framework web — React.js, Laravel, Node.js",
+          "Mobile development — Flutter atau Kotlin",
+          "Game development — Unity atau Construct",
+          "API development — REST API, GraphQL",
+          "UI/UX Design — wireframing, prototyping, usability testing",
+          "Manajemen basis data lanjutan — Firebase, PostgreSQL"
+        ]
+      },
+      {
+        "year": 3,
+        "label": "Proyek Nyata, Magang & Sertifikasi",
+        "items": [
+          "Prakerin / Magang di industri mitra (6 bulan)",
+          "Proyek akhir — pengembangan aplikasi atau gim",
+          "Sertifikasi kompetensi BNSP",
+          "Portofolio profesional dan personal branding",
+          "Pengenalan DevOps — CI/CD, cloud deployment",
+          "Kewirausahaan digital — publikasi aplikasi ke Play Store / App Store"
+        ]
+      }
+    ],
+    "careers": [
+      {
+        "title": "Frontend Developer",
+        "desc": "Membangun antarmuka web yang interaktif dan responsif",
+        "icon": "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13 12H3"
+      },
+      {
+        "title": "Backend Developer",
+        "desc": "Mengelola server, database, dan logika bisnis aplikasi",
+        "icon": "M5 12h14M12 5l7 7-7 7"
+      },
+      {
+        "title": "Mobile Developer",
+        "desc": "Membuat aplikasi mobile native atau cross-platform",
+        "icon": "M12 18h.01M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"
+      },
+      {
+        "title": "Game Developer",
+        "desc": "Merancang dan mengembangkan gim interaktif",
+        "icon": "M14.828 14.828a4 4 0 0 1-5.656 0M9.172 9.172a4 4 0 0 1 5.656 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      },
+      {
+        "title": "QA Engineer",
+        "desc": "Memastikan kualitas perangkat lunak melalui pengujian sistematis",
+        "icon": "M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      },
+      {
+        "title": "DevOps Engineer",
+        "desc": "Mengelola otomatisasi deployment dan infrastruktur cloud",
+        "icon": "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+      }
+    ],
+    "gallery": [
+      "https://picsum.photos/seed/pplg-activity-1/800/600",
+      "https://picsum.photos/seed/pplg-activity-2/800/600",
+      "https://picsum.photos/seed/pplg-activity-3/800/600",
+      "https://picsum.photos/seed/pplg-activity-4/800/600",
+      "https://picsum.photos/seed/pplg-activity-5/800/600",
+      "https://picsum.photos/seed/pplg-activity-6/800/600"
+    ]
+  }
+}

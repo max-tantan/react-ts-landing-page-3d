@@ -1,1 +1,1 @@
-export type { ProgramCard } from './program'
+export type { ProgramCard, JurusanDetail } from './program'

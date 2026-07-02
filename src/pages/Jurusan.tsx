@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { BlurText, ArrowUpRight, CornerBrackets, SectionDivider, GlareHover } from '../components'
 import type { ProgramCard } from '../types'
@@ -5,10 +6,10 @@ import { fadeUp } from '../hooks/useFadeUp'
 
 const programs: ProgramCard[] = [
   {
-    code: 'RPL',
-    title: 'Rekayasa Perangkat Lunak',
-    body: 'Kembangkan aplikasi web dan mobile dengan metodologi pengembangan modern, dari perencanaan hingga deployment produksi.',
-    tags: ['Web Dev', 'Mobile', 'Agile', 'Full Stack'],
+    code: 'PPLG',
+    title: 'Pengembangan Perangkat Lunak dan Gim',
+    body: 'Kembangkan aplikasi web, mobile, dan gim dengan teknologi modern — dari coding hingga deployment — siap bersaing di industri digital global.',
+    tags: ['Web Dev', 'Mobile', 'Game Dev', 'Full Stack'],
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 text-copy">
         <path d="M4 6.47 5.76 10H20v8H4V6.47M22 4h-4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.89-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4Z" />
@@ -40,6 +41,7 @@ const programs: ProgramCard[] = [
 ]
 
 function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
+  const detailPath = `/jurusan/${code.toLowerCase()}`
   return (
     <GlareHover
       width="100%"
@@ -86,10 +88,13 @@ function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
             </p>
           </div>
           <div className="mt-auto pt-4">
-            <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent">
-              Pelajari selengkapnya
+            <Link
+              to={detailPath}
+              className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent transition-all hover:text-sky-400"
+            >
+              Lihat lebih banyak
               <ArrowUpRight className="h-3.5 w-3.5" />
-            </span>
+            </Link>
           </div>
         </div>
       </motion.article>
@@ -169,13 +174,13 @@ export function Jurusan() {
         <div className="space-y-20 md:space-y-28">
           {[
             {
-              title: 'Rekayasa Perangkat Lunak',
-              code: 'RPL',
-              image: 'https://picsum.photos/seed/rpl-code/800/600',
+              title: 'Pengembangan Perangkat Lunak dan Gim',
+              code: 'PPLG',
+              image: 'https://picsum.photos/seed/pplg-code/800/600',
               items: [
                 'Dasar pemrograman — HTML, CSS, JavaScript, PHP',
-                'Framework modern — React, Laravel, Node.js',
-                'Database & API — MySQL, REST API, Firebase',
+                'Framework modern — React, Laravel, Node.js, Flutter',
+                'Game development — Unity, Construct, Godot',
                 'UI/UX Design — Figma, prototyping, user research',
                 'Siklus pengembangan — Agile, Scrum, Git, deployment',
               ],
