@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
@@ -200,9 +200,10 @@ export function Berita() {
   const PER_PAGE = 10
   const totalFilteredPages = Math.ceil(filteredData.length / PER_PAGE)
 
-  useEffect(() => {
+  function handleFilterChange(value: FilterValue) {
+    setFilter(value)
     setPrestasiPage(1)
-  }, [filter])
+  }
 
   return (
     <section className="bg-base pt-28">
@@ -335,7 +336,7 @@ export function Berita() {
           {filterOptions.map((opt) => (
             <button
               key={opt.value}
-              onClick={() => setFilter(opt.value)}
+              onClick={() => handleFilterChange(opt.value)}
               className={`font-mono text-xs tracking-wide px-4 py-2 transition-all ${
                 filter === opt.value
                   ? 'bg-accent text-base font-bold'
