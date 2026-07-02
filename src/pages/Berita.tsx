@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion'
-import { BlurText, CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
+import prestasiData from '../data/prestasi.json'
 
 type Student = {
   name: string
@@ -177,7 +179,31 @@ function NewsSection({ item, index }: { item: NewsItem; index: number }) {
   )
 }
 
+const filterOptions = [
+  { value: 'semua', label: 'Semua' },
+  { value: 'siswa', label: 'Siswa' },
+  { value: 'guru', label: 'Guru' },
+] as const
+
+type FilterValue = (typeof filterOptions)[number]['value']
+
 export function Berita() {
+  const [prestasiPage, setPrestasiPage] = useState(1)
+  const [filter, setFilter] = useState<FilterValue>('semua')
+
+  const filteredData = filter === 'semua'
+    ? prestasiData
+    : prestasiData.filter((item) =>
+        filter === 'siswa' ? item.peran.startsWith('Siswa') : item.peran === 'Guru'
+      )
+
+  const PER_PAGE = 10
+  const totalFilteredPages = Math.ceil(filteredData.length / PER_PAGE)
+
+  useEffect(() => {
+    setPrestasiPage(1)
+  }, [filter])
+
   return (
     <section className="bg-base pt-28">
       <div className="px-6 pb-16 md:px-12 lg:px-16">
@@ -244,14 +270,115 @@ export function Berita() {
         <SectionDivider />
       </div>
 
-      <div className="divide-y divide-copy/5">
+      <div className="px-6 md:px-12 lg:px-16">
+        <motion.p
+          {...fadeUp(0.1)}
+          className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
+        >
+          // Berita Terkini
+        </motion.p>
+        <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
+          <BlurText
+            text="Berita terkini"
+            delay={150}
+            animateBy="words"
+            direction="bottom"
+            className="my-0"
+          />
+          <BlurText
+            text="dari YADIKA SOREANG"
+            delay={150}
+            animateBy="words"
+            direction="bottom"
+            className="my-0"
+          />
+        </div>
+      </div>
+
+      <div className="divide-y divide-copy/5 mt-8">
         {news.map((item, i) => (
           <NewsSection key={item.title} item={item} index={i} />
         ))}
       </div>
 
-      <div className="px-6 pt-16 pb-16 md:px-12 lg:px-16">
+      <div className="px-6 pt-16 md:px-12 lg:px-16">
         <SectionDivider />
+      </div>
+
+      <div className="px-6 pb-16 md:px-12 lg:px-16">
+        <div className="mt-16">
+          <motion.p
+            {...fadeUp(0.1)}
+            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
+          >
+            // Prestasi Siswa & Guru
+          </motion.p>
+          <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
+            <BlurText
+              text="Kebanggaan"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="keluarga YADIKA"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
+        </div>
+
+        <div className="mt-8 flex items-center gap-2">
+          {filterOptions.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => setFilter(opt.value)}
+              className={`font-mono text-xs tracking-wide px-4 py-2 transition-all ${
+                filter === opt.value
+                  ? 'bg-accent text-base font-bold'
+                  : 'border border-copy/10 text-muted hover:border-accent/50 hover:text-copy'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={prestasiPage}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+          >
+            {(() => {
+              const start = (prestasiPage - 1) * PER_PAGE
+              return filteredData.slice(start, start + PER_PAGE).map((item, i) => (
+                <PrestasiCard key={item.id} item={item} index={i} />
+              ))
+            })()}
+          </motion.div>
+        </AnimatePresence>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mt-10 font-mono text-[11px] tracking-wide text-muted text-center"
+        >
+          Menampilkan {Math.min(PER_PAGE, filteredData.length - (prestasiPage - 1) * PER_PAGE)} dari {filteredData.length} prestasi
+        </motion.p>
+
+        <Pagination
+          currentPage={prestasiPage}
+          totalPages={totalFilteredPages}
+          onPageChange={setPrestasiPage}
+        />
       </div>
     </section>
   )

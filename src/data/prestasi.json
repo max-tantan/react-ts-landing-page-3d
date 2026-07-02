@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "nama": "Aulia Rahman",
+    "peran": "Siswa",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 1 Hackathon Nasional",
+    "deskripsi": "Berhasil mengalahkan 50 tim dari seluruh Indonesia dalam kompetisi pengembangan aplikasi mobile tingkat nasional.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 2,
+    "nama": "Nadia Putri",
+    "peran": "Siswi",
+    "program": "Perhotelan",
+    "prestasi": "Magang Terbaik Hotel Grand Asia",
+    "deskripsi": "Terpilih sebagai siswa magang terbaik di Hotel Grand Asia Bandung dan mendapat tawaran kerja langsung setelah lulus.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 3,
+    "nama": "Dimas Saputra",
+    "peran": "Siswa",
+    "program": "Akuntansi",
+    "prestasi": "Sertifikasi BNSP Akuntansi",
+    "deskripsi": "Meraih sertifikasi BNSP di bidang akuntansi sebelum lulus. Membukukan laporan keuangan untuk 3 UMKM binaan sekolah.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 4,
+    "nama": "Sinta Dewi",
+    "peran": "Siswi",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 2 Lomba UI/UX Design",
+    "deskripsi": "Mendesain aplikasi edukasi interaktif untuk anak berkebutuhan khusus dan meraih juara 2 tingkat provinsi.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 5,
+    "nama": "Rizki Firmansyah",
+    "peran": "Siswa",
+    "program": "Perhotelan",
+    "prestasi": "Juara 1 Barista Competition",
+    "deskripsi": "Memenangkan kompetisi barista antar SMK se-Jawa Barat dengan inovasi racikan kopi Nusantara.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 6,
+    "nama": "Anisa Rahmawati",
+    "peran": "Siswi",
+    "program": "Akuntansi",
+    "prestasi": "Juara 1 Olimpiade Akuntansi",
+    "deskripsi": "Meraih medali emas dalam Olimpiade Akuntansi tingkat provinsi yang diselenggarakan oleh IAI.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 7,
+    "nama": "Budi Santoso",
+    "peran": "Siswa",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 3 Competitive Programming",
+    "deskripsi": "Menjuarai kompetisi programming tingkat Jawa Barat yang diikuti oleh 100+ tim dari berbagai sekolah.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 8,
+    "nama": "Citra Lestari",
+    "peran": "Siswi",
+    "program": "Perhotelan",
+    "prestasi": "Best Student Hotel Management",
+    "deskripsi": "Dianugerahi gelar Best Student dalam program pelatihan hotel management di Singapura.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 9,
+    "nama": "Dwiki Kurniawan",
+    "peran": "Siswa",
+    "program": "Akuntansi",
+    "prestasi": "Juara 2 Laporan Keuangan",
+    "deskripsi": "Menyusun laporan keuangan terbaik kedua dalam kompetisi akuntansi yang diadakan oleh BAPEPTI.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 10,
+    "nama": "Fany Wijaya",
+    "peran": "Siswi",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 1 Data Science Challenge",
+    "deskripsi": "Menganalisis data publik untuk solusi smart city dan memenangkan kompetisi data science nasional.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 11,
+    "nama": "Gilang Permadi",
+    "peran": "Siswa",
+    "program": "Perhotelan",
+    "prestasi": "Juara 2 Food & Beverage Service",
+    "deskripsi": "Menunjukkan keahlian table service dan wine pairing terbaik kedua dalam lomba F&B antar SMK.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 12,
+    "nama": "Hana Maulida",
+    "peran": "Siswi",
+    "program": "Akuntansi",
+    "prestasi": "Best Presentation Akuntansi",
+    "deskripsi": "Meraih penghargaan presentasi laporan keuangan terbaik dalam seminar keuangan daerah.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 13,
+    "nama": "Indra Lesmana",
+    "peran": "Siswa",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 2 IoT Innovation",
+    "deskripsi": "Mengembangkan alat monitoring kualitas udara berbasis IoT dan meraih juara 2 inovasi teknologi.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 14,
+    "nama": "Jihan Syakira",
+    "peran": "Siswi",
+    "program": "Perhotelan",
+    "prestasi": "Juara 1 Tour Guide Competition",
+    "deskripsi": "Memenangkan lomba pemandu wisata tingkat provinsi dengan penguasaan bahasa Inggris dan Jepang.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 15,
+    "nama": "Kevin Pratama",
+    "peran": "Siswa",
+    "program": "Akuntansi",
+    "prestasi": "Juara 3 Pajak Muda",
+    "deskripsi": "Memecahkan studi kasus perpajakan dan meraih juara 3 dalam lomba perpajakan antar SMK.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 16,
+    "nama": "Bpk. Ahmad Fauzi",
+    "peran": "Guru",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Guru Berprestasi Tingkat Provinsi",
+    "deskripsi": "Terpilih sebagai guru berprestasi tingkat Jawa Barat atas inovasi metode pengajaran berbasis proyek.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 17,
+    "nama": "Ibu Sari Nurjanah",
+    "peran": "Guru",
+    "program": "Perhotelan",
+    "prestasi": "Sertifikasi Chef Internasional",
+    "deskripsi": "Meraih sertifikasi chef profesional dari lembaga internasional dan membawa siswa magang ke luar negeri.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 18,
+    "nama": "Bpk. Dedi Kuswandi",
+    "peran": "Guru",
+    "program": "Akuntansi",
+    "prestasi": "Inovasi Pembelajaran Digital",
+    "deskripsi": "Mengembangkan platform pembelajaran akuntansi digital yang digunakan oleh 5 SMK di Kabupaten Bandung.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 19,
+    "nama": "Ibu Rina Marlina",
+    "peran": "Guru",
+    "program": "Rekayasa Perangkat Lunak",
+    "prestasi": "Juara 1 Lomba Inovasi Guru",
+    "deskripsi": "Memenangkan lomba inovasi pembelajaran tingkat nasional dengan metode gamifikasi coding.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  },
+  {
+    "id": 20,
+    "nama": "Bpk. Agus Wijaya",
+    "peran": "Guru",
+    "program": "Perhotelan",
+    "prestasi": "Trainer Nasional Hospitality",
+    "deskripsi": "Ditunjuk sebagai trainer nasional untuk pelatihan standar pelayanan hotel oleh Kementerian Pariwisata.",
+    "image": "https://picsum.photos/seed/prestasi/400/500"
+  }
+]
