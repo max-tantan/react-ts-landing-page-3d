@@ -6,6 +6,7 @@ import {
   SectionDivider,
   ArrowUpRight,
   GlareHover,
+  Lanyard,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import pplgData from '../data/pplg.json'
@@ -109,14 +110,16 @@ export function JurusanDetail() {
             <motion.div
               {...fadeUp(0.2)}
               className="relative overflow-hidden"
+              style={{ height: 500 }}
             >
-              <img
-                src={data.sambutan.photo}
-                alt={data.sambutan.name}
-                loading="lazy"
-                className="h-full w-full object-cover"
+              <Lanyard
+                position={[0, 0, 20]}
+                gravity={[0, -40, 0]}
+                fov={20}
+                frontImage={data.sambutan.photo}
+                transparent={true}
+                lanyardWidth={0.8}
               />
-              <div className="absolute inset-0 border border-copy/5" />
             </motion.div>
 
             <motion.div
