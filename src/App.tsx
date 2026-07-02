@@ -6,6 +6,7 @@ import { Jurusan } from './pages/Jurusan'
 import { JurusanDetail } from './pages/JurusanDetail'
 import { Fasilitas } from './pages/Fasilitas'
 import { Berita } from './pages/Berita'
+import { BeritaDetail } from './pages/BeritaDetail'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/jurusan/:code" element={<JurusanDetail />} />
           <Route path="/fasilitas" element={<Fasilitas />} />
           <Route path="/berita" element={<Berita />} />
+          <Route path="/berita/:slug" element={<BeritaDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

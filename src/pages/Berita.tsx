@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import prestasiData from '../data/prestasi.json'
+import beritaData from '../data/berita.json'
 
 type Student = {
   name: string
@@ -13,11 +15,15 @@ type Student = {
 }
 
 type NewsItem = {
+  id: number
+  slug: string
   date: string
+  category: string
   title: string
   excerpt: string
-  body: string
+  author: string
   image: string
+  content: string[]
 }
 
 const topStudents: Student[] = [
@@ -44,36 +50,7 @@ const topStudents: Student[] = [
   },
 ]
 
-const news: NewsItem[] = [
-  {
-    date: '20 Jun 2026',
-    title: 'PPDB SMK YADIKA Tahun Ajaran 2026/2027 Resmi Dibuka',
-    excerpt: 'Pendaftaran peserta didik baru telah dimulai. Tersedia jalur prestasi, reguler, dan afirmasi.',
-    body: 'SMK YADIKA SOREANG membuka pendaftaran peserta didik baru untuk tahun ajaran 2026/2027. Tersedia tiga program keahlian unggulan: Rekayasa Perangkat Lunak, Perhotelan, dan Akuntansi. Pendaftaran dapat dilakukan secara online melalui website resmi sekolah atau datang langsung ke kampus.',
-    image: 'https://picsum.photos/seed/ppdb-yadika/600/400',
-  },
-  {
-    date: '15 Mei 2026',
-    title: 'Siswa RPL Juara 2 Lomba Aplikasi Mobile Tingkat Provinsi',
-    excerpt: 'Tim pengembang aplikasi mobile SMK YADIKA berhasil meraih juara kedua pada ajang kompetisi tingkat Jawa Barat.',
-    body: 'Tim Rekayasa Perangkat Lunak SMK YADIKA berhasil membawa pulang trophy juara kedua dalam ajang Lomba Aplikasi Mobile Tingkat Provinsi Jawa Barat. Aplikasi yang dikembangkan berupa platform pembelajaran interaktif untuk siswa SMK.',
-    image: 'https://picsum.photos/seed/rpl-juara/600/400',
-  },
-  {
-    date: '28 Apr 2026',
-    title: 'Penandatanganan MoU dengan Hotel Grand Asia Bandung',
-    excerpt: 'Kerjasama baru bidang magang dan penyerapan lulusan program keahlian Perhotelan.',
-    body: 'SMK YADIKA resmi menjalin kerjasama dengan Hotel Grand Asia Bandung. MoU ini mencakup program magang bagi siswa Perhotelan, pelatihan bersama, dan prioritas penyerapan lulusan. Hotel Grand Asia akan menjadi salah satu mitra industri utama program keahlian Perhotelan.',
-    image: 'https://picsum.photos/seed/mou-hotel/600/400',
-  },
-  {
-    date: '10 Mar 2026',
-    title: 'Workshop Akuntansi Digital bersama Kantor Akuntan Publik',
-    excerpt: 'Siswa Akuntansi mengikuti pelatihan penggunaan software akuntansi terkini langsung dari praktisi.',
-    body: 'Program keahlian Akuntansi mengadakan workshop Akuntansi Digital yang menghadirkan praktisi dari Kantor Akuntan Publik terkemuka. Siswa mendapat pelatihan langsung penggunaan software akuntansi modern dan praktik pencatatan keuangan digital.',
-    image: 'https://picsum.photos/seed/workshop-akuntansi/600/400',
-  },
-]
+
 
 function StudentCard({ student, index }: { student: Student; index: number }) {
   return (
@@ -142,11 +119,8 @@ function NewsSection({ item, index }: { item: NewsItem; index: number }) {
         <p className="mt-2 font-body text-sm leading-relaxed text-muted">
           {item.excerpt}
         </p>
-        <p className="mt-3 font-body text-sm leading-relaxed text-muted/70">
-          {item.body}
-        </p>
-        <a
-          href="#"
+        <Link
+          to={`/berita/${item.slug}`}
           className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent transition-colors hover:text-sky-400"
         >
           Baca selengkapnya
@@ -159,7 +133,7 @@ function NewsSection({ item, index }: { item: NewsItem; index: number }) {
           >
             <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </a>
+        </Link>
       </div>
 
       <div
@@ -297,8 +271,8 @@ export function Berita() {
       </div>
 
       <div className="divide-y divide-copy/5 mt-8">
-        {news.map((item, i) => (
-          <NewsSection key={item.title} item={item} index={i} />
+        {(beritaData as NewsItem[]).map((item, i) => (
+          <NewsSection key={item.id} item={item} index={i} />
         ))}
       </div>
 
