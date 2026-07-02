@@ -1,0 +1,95 @@
+{
+  "code": "AK",
+  "title": "Akuntansi",
+  "subtitle": "Keuangan & Audit",
+  "heroTitle": "Mencetak Ahli Keuangan Masa Depan",
+  "sambutan": {
+    "name": "Bapak Hendra Wijaya, S.E., M.Si.",
+    "role": "Kepala Program Akuntansi",
+    "photo": "https://picsum.photos/seed/kaprodi-ak/400/400",
+    "message": "Selamat datang di jurusan Akuntansi. Di dunia bisnis, akuntansi adalah bahasa universal yang digunakan untuk mengukur kesehatan finansial sebuah perusahaan. Kami tidak hanya mengajarkan cara mencatat transaksi, tetapi juga membentuk pola pikir analitis, teliti, dan bertanggung jawab. Saya sangat bangga dengan dedikasi siswa-siswi kami yang terus belajar dan berkembang. Dengan bekal ilmu akuntansi yang kuat, saya yakin mereka akan menjadi profesional keuangan yang berintegritas dan siap bersaing di era global."
+  },
+  "description": [
+    "Akuntansi (AK) adalah kompetensi keahlian yang berfokus pada pencatatan, pengelompokan, pengikhtisaran, dan pelaporan transaksi keuangan secara sistematis. Jurusan ini membekali siswa dengan kemampuan menyusun laporan keuangan, menganalisis data, serta memahami perpajakan dan auditing. Akuntansi menjadi fondasi penting dalam pengambilan keputusan bisnis, sehingga lulusannya selalu dibutuhkan di berbagai sektor industri.",
+    "Pembelajaran di jurusan Akuntansi tidak hanya bersifat teoritis, tetapi juga praktik langsung menggunakan software akuntansi profesional seperti MYOB dan Accurate. Siswa dilatih menyelesaikan siklus akuntansi lengkap — dari jurnal umum, buku besar, neraca saldo, hingga laporan laba rugi. Kami juga membekali siswa dengan pemahaman perpajakan terkini, termasuk PPh, PPN, dan pelaporan SPT secara digital.",
+    "Lulusan Akuntansi memiliki prospek karier yang luas dan stabil. Setiap perusahaan, baik skala kecil maupun besar, membutuhkan tenaga akuntansi yang kompeten. Lulusan dapat berkiprah sebagai staf akuntansi, tax staff, internal auditor, konsultan keuangan, atau melanjutkan studi ke jenjang lebih tinggi. Dengan sertifikasi kompetensi BNSP dan pengalaman praktik, siswa AK siap menjadi tenaga profesional di bidang keuangan dan perpajakan."
+  ],
+  "curriculum": [
+    {
+      "year": 1,
+      "label": "Dasar-Dasar Akuntansi & Bisnis",
+      "items": [
+        "Pengantar akuntansi — konsep debit/kredit, persamaan dasar akuntansi",
+        "Siklus akuntansi — jurnal umum, buku besar, neraca saldo",
+        "Akuntansi perusahaan jasa dan dagang",
+        "Dasar perpajakan — NPWP, PPh 21, PPN",
+        "Komunikasi bisnis dan etika profesi",
+        "Aplikasi komputer akuntansi — pengenalan MYOB"
+      ]
+    },
+    {
+      "year": 2,
+      "label": "Akuntansi Lanjutan & Software Profesional",
+      "items": [
+        "Akuntansi perusahaan manufaktur — HPP, laporan biaya produksi",
+        "Perpajakan lanjutan — PPh Badan, PPN, e-Faktur, e-SPT",
+        "Software akuntansi — MYOB dan Accurate lanjutan",
+        "Auditing dasar — prosedur audit, kertas kerja audit",
+        "Akuntansi keuangan lanjutan — laporan keuangan konsolidasi",
+        "Analisis laporan keuangan — rasio keuangan, interpretasi data"
+      ]
+    },
+    {
+      "year": 3,
+      "label": "Magang, Praktik & Sertifikasi",
+      "items": [
+        "Prakerin / Magang di perusahaan atau Kantor Akuntan Publik (6 bulan)",
+        "Proyek akhir — penyusunan laporan keuangan perusahaan",
+        "Sertifikasi kompetensi BNSP — akuntansi dan perpajakan",
+        "Portofolio profesional dan personal branding",
+        "Kewirausahaan — pembukuan UMKM dan jasa akuntansi mandiri",
+        "Persiapan kerja — wawancara, CV, dan etika kerja profesional"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Staff Akuntansi",
+      "desc": "Menyusun dan memproses laporan keuangan harian perusahaan",
+      "icon": "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"
+    },
+    {
+      "title": "Tax Staff",
+      "desc": "Menangani kewajiban perpajakan perusahaan dan pelaporan SPT",
+      "icon": "M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"
+    },
+    {
+      "title": "Internal Auditor",
+      "desc": "Memeriksa kepatuhan dan efektivitas sistem keuangan perusahaan",
+      "icon": "M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+    },
+    {
+      "title": "Konsultan Keuangan",
+      "desc": "Memberikan saran pengelolaan keuangan dan perencanaan bisnis",
+      "icon": "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
+    },
+    {
+      "title": "Kasir / Teller",
+      "desc": "Melayani transaksi keuangan dan menjaga akurasi kas",
+      "icon": "M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2m2 4h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm7-5a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+    },
+    {
+      "title": "Accounting Supervisor",
+      "desc": "Mengawasi tim akuntansi dan memastikan ketepatan laporan keuangan",
+      "icon": "M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+    }
+  ],
+  "gallery": [
+    "https://picsum.photos/seed/ak-activity-1/800/600",
+    "https://picsum.photos/seed/ak-activity-2/800/600",
+    "https://picsum.photos/seed/ak-activity-3/800/600",
+    "https://picsum.photos/seed/ak-activity-4/800/600",
+    "https://picsum.photos/seed/ak-activity-5/800/600",
+    "https://picsum.photos/seed/ak-activity-6/800/600"
+  ]
+}

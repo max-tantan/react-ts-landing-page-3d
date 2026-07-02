@@ -8,10 +8,16 @@ import {
   GlareHover,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
-import jurusanData from '../data/jurusan.json'
+import pplgData from '../data/pplg.json'
+import htlData from '../data/htl.json'
+import akData from '../data/ak.json'
 import type { JurusanDetail as JurusanDetailType } from '../types'
 
-const jurusanMap = jurusanData as Record<string, JurusanDetailType>
+const jurusanMap: Record<string, JurusanDetailType> = {
+  pplg: pplgData as JurusanDetailType,
+  htl: htlData as JurusanDetailType,
+  ak: akData as JurusanDetailType,
+}
 
 export function JurusanDetail() {
   const { code } = useParams<{ code: string }>()
@@ -158,10 +164,7 @@ export function JurusanDetail() {
             />
           </div>
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+            {...fadeUp(0.3)}
             className="mt-8 max-w-4xl space-y-4"
           >
             {data.description.map((paragraph, i) => (

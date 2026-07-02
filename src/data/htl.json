@@ -1,0 +1,95 @@
+{
+  "code": "HTL",
+  "title": "Perhotelan",
+  "subtitle": "Hospitality",
+  "heroTitle": "Memberikan Pelayanan Terbaik",
+  "sambutan": {
+    "name": "Ibu Sari Dewi, S.ST., M.M.Par.",
+    "role": "Kepala Program Perhotelan",
+    "photo": "https://picsum.photos/seed/kaprodi-htl/400/400",
+    "message": "Selamat datang di jurusan Perhotelan. Dunia perhotelan adalah dunia pelayanan yang membutuhkan dedikasi, profesionalisme, dan senyuman tulus. Di sini, kami tidak sekadar mengajarkan tata cara melayani tamu, tetapi juga membentuk karakter yang ramah, disiplin, dan berorientasi pada kualitas. Setiap siswa kami siapkan untuk menjadi bagian dari industri hospitality global yang terus berkembang. Saya bangga melihat semangat siswa-siswi kami yang terus berlatih dan belajar, dan saya yakin mereka akan menjadi generasi penerbang yang mampu membawa nama baik sekolah di kancah nasional maupun internasional."
+  },
+  "description": [
+    "Perhotelan (HTL) adalah kompetensi keahlian yang berfokus pada pelayanan jasa perhotelan secara profesional dan sesuai standar internasional. Jurusan ini mempersiapkan siswa untuk menguasai operasional hotel, mulai dari front office, housekeeping, food & beverage, hingga laundry dan room service. Lebih dari sekadar keterampilan teknis, siswa juga ditempa dalam hal etika, komunikasi, dan pelayanan prima yang menjadi inti dari industri perhotelan.",
+    "Kurikulum Perhotelan dirancang untuk memberikan pengalaman praktik langsung yang intensif. Siswa akan belajar di lingkungan simulasi hotel, menangani check-in/out tamu, merapikan kamar, menyajikan makanan dan minuman, serta menangani keluhan tamu dengan sikap profesional. Kami juga menghadirkan praktisi industri sebagai pengajar tamu, serta program magang di hotel-hotel mitra berbintang untuk mengasah kemampuan nyata di lapangan.",
+    "Lulusan Perhotelan memiliki peluang karier yang luas, tidak hanya di dalam negeri tetapi juga di luar negeri. Industri perhotelan, pariwisata, MICE (Meeting, Incentive, Convention, Exhibition), kapal pesiar, hingga restoran kelas atas menjadi tujuan utama lulusan. Dengan bekal sertifikasi kompetensi dan pengalaman magang, siswa HTL siap bersaing sebagai tenaga profesional yang handal di industri hospitality."
+  ],
+  "curriculum": [
+    {
+      "year": 1,
+      "label": "Dasar-Dasar Pelayanan & Industri Perhotelan",
+      "items": [
+        "Dasar perhotelan — sejarah, jenis hotel, departemen hotel",
+        "Front Office — reservasi, check-in/out, operator telepon",
+        "Housekeeping dasar — bed making, guest room cleaning",
+        "Food & Beverage Service — table setup, serving technique",
+        "Laundry & Linen — pencucian, penyetrikaan, distribusi linen",
+        "Bahasa Inggris perhotelan — daily conversation, handling guest"
+      ]
+    },
+    {
+      "year": 2,
+      "label": "Manajemen Operasional & Praktik Lanjutan",
+      "items": [
+        "Front Office lanjutan — property management system (PMS)",
+        "Housekeeping lanjutan — public area, deep cleaning, turndown service",
+        "Food & Beverage Product — menu planning, kitchen basic",
+        "Event & Banquet — MICE, wedding, conference setup",
+        "Housekeeping Management — inventory, scheduling, inspection",
+        "Pendidikan budaya kerja — hospitality mindset, grooming, SOP"
+      ]
+    },
+    {
+      "year": 3,
+      "label": "Magang & Sertifikasi Kompetensi",
+      "items": [
+        "Prakerin / Magang di hotel mitra berbintang (6 bulan)",
+        "Proyek akhir — penyelenggaraan event atau simulasi hotel",
+        "Sertifikasi kompetensi BNSP — front office, housekeeping",
+        "Portofolio profesional dan personal branding",
+        "Kewirausahaan hospitality — membangun usaha F&B atau laundry",
+        "Persiapan kerja — wawancara, CV, dan etika kerja"
+      ]
+    }
+  ],
+  "careers": [
+    {
+      "title": "Front Office Agent",
+      "desc": "Menangani check-in/out, reservasi, dan layanan tamu di lobby hotel",
+      "icon": "M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5m-4 0h4"
+    },
+    {
+      "title": "Housekeeping Attendant",
+      "desc": "Menjaga kebersihan, kenyamanan, dan kerapian kamar serta area hotel",
+      "icon": "M3 6l3 1m0 0l-3 9a5.002 5.002 0 0 0 6.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 0 0 6.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+    },
+    {
+      "title": "Food & Beverage Staff",
+      "desc": "Melayani penyajian makanan-minuman di restoran, banquet, dan bar",
+      "icon": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4m18 0l-3-3m3 3l-3 3M7 12l-3 3m0 0l3 3M21 9V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4m18 0H3"
+    },
+    {
+      "title": "Banquet & Event Coordinator",
+      "desc": "Merancang dan mengelola acara pernikahan, konferensi, dan pesta",
+      "icon": "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"
+    },
+    {
+      "title": "Butler / Concierge",
+      "desc": "Memberikan layanan personal dan eksekutif bagi tamu VIP",
+      "icon": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+    },
+    {
+      "title": "Hotel Supervisor",
+      "desc": "Mengawasi operasional harian dan memastikan standar pelayanan terpenuhi",
+      "icon": "M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"
+    }
+  ],
+  "gallery": [
+    "https://picsum.photos/seed/htl-activity-1/800/600",
+    "https://picsum.photos/seed/htl-activity-2/800/600",
+    "https://picsum.photos/seed/htl-activity-3/800/600",
+    "https://picsum.photos/seed/htl-activity-4/800/600",
+    "https://picsum.photos/seed/htl-activity-5/800/600",
+    "https://picsum.photos/seed/htl-activity-6/800/600"
+  ]
+}
