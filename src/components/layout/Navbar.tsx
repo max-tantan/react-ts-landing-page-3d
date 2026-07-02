@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { ArrowUpRight } from './icons/ArrowUpRight'
-import logoSrc from '../assets/image.png'
+import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
+import logoSrc from '../../assets/image.png'
 
 const navLinks = [
   { label: 'Beranda', to: '/' },

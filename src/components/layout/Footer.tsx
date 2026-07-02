@@ -1,6 +1,6 @@
-import { ArrowUpRight } from './icons/ArrowUpRight'
-import { BottomBrackets, SectionDivider } from './Scaffold'
-import logoSrc from '../assets/image.png'
+import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
+import { BottomBrackets, SectionDivider } from '../sections/Scaffold'
+import logoSrc from '../../assets/image.png'
 
 export function Footer() {
   return (

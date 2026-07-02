@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
-import { BlurText } from './BlurText'
-import { FadingVideo } from './FadingVideo'
-import { ArrowUpRight } from './icons/ArrowUpRight'
-import { Play } from './icons/Play'
+import { BlurText } from '../ui/BlurText'
+import { FadingVideo } from '../ui/FadingVideo'
+import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
+import { Play } from '../ui/icons/Play'
 import { CornerBrackets, SectionDivider } from './Scaffold'
-import { fadeUp } from '../hooks/useFadeUp'
+import { fadeUp } from '../../hooks/useFadeUp'
 
 const HERO_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4'
