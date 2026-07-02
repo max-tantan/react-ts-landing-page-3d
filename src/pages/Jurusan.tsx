@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { BlurText, ArrowUpRight, CornerBrackets, SectionDivider, GlareHover } from '../components'
 import type { ProgramCard } from '../types'
 import { fadeUp } from '../hooks/useFadeUp'
 
@@ -57,9 +57,9 @@ function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
         {...fadeUp(0.2)}
         className="flex flex-col"
       >
-        <div className="flex items-center gap-4 border-b border-copy/5 px-6 py-3">
+        <div className="flex items-center gap-4 border-b border-copy/5 px-5 py-2.5">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center bg-accent/10">
+            <div className="flex h-7 w-7 items-center justify-center bg-accent/10">
               {icon}
             </div>
             <span className="tool-tag">{code}</span>
@@ -76,14 +76,16 @@ function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col px-6 py-5">
-          <h3 className="font-display text-2xl font-bold leading-tight tracking-[-1px] text-copy md:text-3xl">
+        <div className="flex flex-1 flex-col px-5 py-4">
+          <h3 className="line-clamp-2 h-[3.5rem] font-display text-[1.25rem] font-bold leading-snug tracking-[-0.5px] text-copy">
             {title}
           </h3>
-          <p className="mt-3 max-w-[36ch] font-body text-sm font-light leading-relaxed text-muted">
-            {body}
-          </p>
-          <div className="mt-auto pt-6">
+          <div className="mt-2 flex-1">
+            <p className="line-clamp-5 font-body text-[0.8125rem] font-light leading-relaxed text-muted">
+              {body}
+            </p>
+          </div>
+          <div className="mt-auto pt-4">
             <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent">
               Pelajari selengkapnya
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -97,6 +99,7 @@ function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
 
 export function Jurusan() {
   return (
+    <>
     <section className="bg-base pt-28">
       <div className="px-6 pb-16 md:px-12 lg:px-16">
         <CornerBrackets className="relative mb-16 h-6" />
@@ -108,14 +111,22 @@ export function Jurusan() {
           >
             // Program Keahlian
           </motion.p>
-          <motion.h2
-            {...fadeUp(0.2)}
-            className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
-          >
-            Pilih jalur
-            <br />
-            masa depanmu
-          </motion.h2>
+          <div className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+            <BlurText
+              text="Pilih jalur"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="masa depanmu"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
         </header>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -127,5 +138,123 @@ export function Jurusan() {
 
       <SectionDivider />
     </section>
+
+    <section className="bg-base py-24 md:py-32">
+      <div className="px-6 md:px-12 lg:px-16">
+        <header className="mb-16">
+          <motion.p
+            {...fadeUp(0.1)}
+            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
+          >
+            // Yang Dipelajari
+          </motion.p>
+          <div className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+            <BlurText
+              text="Apa yang akan"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="kamu pelajari?"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
+        </header>
+
+        <div className="space-y-20 md:space-y-28">
+          {[
+            {
+              title: 'Rekayasa Perangkat Lunak',
+              code: 'RPL',
+              image: 'https://picsum.photos/seed/rpl-code/800/600',
+              items: [
+                'Dasar pemrograman — HTML, CSS, JavaScript, PHP',
+                'Framework modern — React, Laravel, Node.js',
+                'Database & API — MySQL, REST API, Firebase',
+                'UI/UX Design — Figma, prototyping, user research',
+                'Siklus pengembangan — Agile, Scrum, Git, deployment',
+              ],
+            },
+            {
+              title: 'Perhotelan',
+              code: 'HTL',
+              image: 'https://picsum.photos/seed/hotel-service/800/600',
+              items: [
+                'Front Office — resepsionis, check-in/out, reservasi',
+                'Housekeeping — tata graha, laundry, room inspection',
+                'Food & Beverage — pelayanan restoran, barista, banquet',
+                'Hospitality Management — standar layanan internasional',
+                'Praktik langsung — hotel simulasi & magang industri',
+              ],
+            },
+            {
+              title: 'Akuntansi',
+              code: 'AK',
+              image: 'https://picsum.photos/seed/accounting/800/600',
+              items: [
+                'Dasar akuntansi — jurnal umum, buku besar, neraca',
+                'Siklus akuntansi — perusahaan jasa, dagang, manufaktur',
+                'Perpajakan — PPh, PPN, e-Faktur, pelaporan SPT',
+                'Software akuntansi — MYOB, Accurate, Excel keuangan',
+                'Audit & sertifikasi — BNSP, etika profesi akuntan',
+              ],
+            },
+          ].map((program, i) => {
+            const isReversed = i % 2 === 0
+
+            return (
+              <motion.div
+                key={program.code}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, ease: 'easeOut' }}
+                className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 ${isReversed ? 'md:flex-row-reverse' : ''}`}
+              >
+                <div className="w-full md:w-1/2">
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={program.image}
+                      alt={program.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 border border-copy/5" />
+                  </div>
+                </div>
+
+                <div className="w-full md:w-1/2">
+                  <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70">
+                    {program.code}
+                  </span>
+                  <h3 className="mt-2 font-display text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-[1.1] tracking-[-1.5px] text-copy">
+                    {program.title}
+                  </h3>
+                  <div className="mt-6 h-px w-10 bg-accent/30" />
+                  <ul className="mt-6 space-y-4">
+                    {program.items.map((item) => (
+                      <li key={item} className="flex gap-3">
+                        <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
+                        <span className="font-body text-sm leading-relaxed text-muted">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+
+      <SectionDivider />
+    </section>
+    </>
   )
 }

@@ -42,6 +42,9 @@ export function Hero() {
 
           <BlurText
             text="Membangun Generasi Siap Kerja dan Siap Dunia"
+            delay={150}
+            animateBy="words"
+            direction="bottom"
             className="mt-4 max-w-4xl justify-center font-display text-[clamp(2.25rem,7vw,5.5rem)] leading-[0.85] tracking-[-3px] text-copy"
           />
 

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery, GlareHover } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const sejarah = [
@@ -47,14 +47,22 @@ export function Profil() {
           >
             // Profil Sekolah
           </motion.p>
-          <motion.h2
-            {...fadeUp(0.2)}
-            className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
-          >
-            Tentang
-            <br />
-            SMK YADIKA SOREANG
-          </motion.h2>
+          <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+            <BlurText
+              text="Tentang"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="SMK YADIKA SOREANG"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
         </header>
 
         <div className="mt-12 grid gap-12 md:grid-cols-2">
@@ -169,14 +177,22 @@ export function Profil() {
             >
               // Arsip Sejarah
             </motion.p>
-            <motion.h2
-              {...fadeUp(0.2)}
-              className="mt-3 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
-            >
-              Kronik
-              <br />
-              Perjalanan
-            </motion.h2>
+            <div className="mt-3 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+              <BlurText
+                text="Kronik"
+                delay={150}
+                animateBy="words"
+                direction="bottom"
+                className="my-0"
+              />
+              <BlurText
+                text="Perjalanan"
+                delay={150}
+                animateBy="words"
+                direction="bottom"
+                className="my-0"
+              />
+            </div>
             <motion.p
               {...fadeUp(0.3)}
               className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted"

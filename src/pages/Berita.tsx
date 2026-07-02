@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 type Student = {
@@ -190,14 +190,22 @@ export function Berita() {
           >
             // Berita & Kegiatan
           </motion.p>
-          <motion.h2
-            {...fadeUp(0.2)}
-            className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
-          >
-            Kabar terbaru
-            <br />
-            dari YADIKA
-          </motion.h2>
+          <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+            <BlurText
+              text="Kabar terbaru"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="dari YADIKA"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
         </header>
 
         <div className="mt-16">
@@ -207,14 +215,22 @@ export function Berita() {
           >
             // Prestasi Siswa Terbaik
           </motion.p>
-          <motion.h3
-            {...fadeUp(0.35)}
-            className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl"
-          >
-            Siswa terbaik
-            <br />
-            dari setiap angkatan
-          </motion.h3>
+          <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
+            <BlurText
+              text="Siswa terbaik"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="dari setiap angkatan"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">

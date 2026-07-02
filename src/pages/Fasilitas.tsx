@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const facilities = [
@@ -72,14 +72,22 @@ export function Fasilitas() {
           >
             // Fasilitas
           </motion.p>
-          <motion.h2
-            {...fadeUp(0.2)}
-            className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
-          >
-            Sarana & prasarana
-            <br />
-            standar industri
-          </motion.h2>
+          <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
+            <BlurText
+              text="Sarana & prasarana"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+            <BlurText
+              text="standar industri"
+              delay={150}
+              animateBy="words"
+              direction="bottom"
+              className="my-0"
+            />
+          </div>
         </header>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
