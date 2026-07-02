@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiVuedotjs } from 'react-icons/si'
+import { FiGlobe, FiBook, FiStar } from 'react-icons/fi'
 import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
@@ -20,6 +21,65 @@ const reasons = [
   {
     title: 'Pengajar Profesional',
     body: 'Tenaga pengajar bersertifikasi dengan pengalaman industri dan pendekatan pembelajaran modern.',
+  },
+]
+
+type AlumniComment = {
+  name: string
+  destination: string
+  category: string
+  categoryIcon: 'globe' | 'book' | 'star'
+  testimonial: string
+}
+
+const alumniComments: AlumniComment[] = [
+  {
+    name: 'Rizky Pratama',
+    destination: 'Jerman — Magang Teknik',
+    category: 'Internasional',
+    categoryIcon: 'globe',
+    testimonial:
+      'Pengalaman magang di Jerman benar-benar mengubah cara pandang saya terhadap teknologi. Ilmu yang saya dapat di YADIKA menjadi bekal utama saya bersaing di tingkat global.',
+  },
+  {
+    name: 'Elena Susanti',
+    destination: 'Rusia — Beasiswa S1',
+    category: 'Internasional',
+    categoryIcon: 'globe',
+    testimonial:
+      'Terima kasih YADIKA, beasiswa ke Rusia terwujud berkat bimbingan dan arahan guru-guru. Dari sini saya belajar bahwa mimpi besar bisa dimulai dari sekolah kejuruan.',
+  },
+  {
+    name: 'Satria Nugraha',
+    destination: 'Jepang — IT Company',
+    category: 'Internasional',
+    categoryIcon: 'globe',
+    testimonial:
+      'Bekerja di Tokyo adalah mimpi yang jadi nyata. Skill coding dan etos kerja yang ditanamkan YADIKA membuat saya percaya diri melamar di perusahaan IT Jepang.',
+  },
+  {
+    name: 'Dinda Amalia',
+    destination: 'Universitas Pendidikan Indonesia',
+    category: 'Universitas',
+    categoryIcon: 'book',
+    testimonial:
+      'Lulus dari YADIKA saya tidak merasa ketinggalan saat kuliah di UPI. Kurikulumnya relevan dan saya bahkan sudah punya sertifikasi yang diakui di perkuliahan.',
+  },
+  {
+    name: 'Angga Firmansyah',
+    destination: 'Universitas Brawijaya',
+    category: 'Universitas',
+    categoryIcon: 'book',
+    testimonial:
+      'Dari YADIKA langsung ke UB. Banyak mata pelajaran yang linier dengan perkuliahan, jadi saya tidak mulai dari nol. Pengalaman praktiknya juga sangat membantu.',
+  },
+  {
+    name: 'Maya, Ryan, Siska & rekan',
+    destination: 'Hotel Mulia, Ritz-Carlton, Raffles, Fairmont',
+    category: 'Hotel Bintang 5',
+    categoryIcon: 'star',
+    testimonial:
+      'Langsung diterima di hotel bintang lima setelah lulus. Pelatihan housekeeping, front office, dan hospitality di YADIKA benar-benar sesuai standar industri.',
   },
 ]
 
@@ -53,6 +113,19 @@ export function Beranda() {
           <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
             <motion.div
               {...fadeUp(0.2)}
+              className="relative overflow-hidden"
+            >
+              <img
+                src="https://picsum.photos/seed/kepala-sekolah/600/700"
+                alt="Kepala Sekolah SMK YADIKA SOREANG"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 border border-copy/5" />
+            </motion.div>
+
+            <motion.div
+              {...fadeUp(0.3)}
               className="flex flex-col justify-center"
             >
               <p className="font-body text-sm leading-relaxed text-muted">
@@ -85,19 +158,6 @@ export function Beranda() {
                   KEPALA SMK YADIKA SOREANG
                 </p>
               </div>
-            </motion.div>
-
-            <motion.div
-              {...fadeUp(0.3)}
-              className="relative overflow-hidden"
-            >
-              <img
-                src="https://picsum.photos/seed/kepala-sekolah/600/700"
-                alt="Kepala Sekolah SMK YADIKA SOREANG"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 border border-copy/5" />
             </motion.div>
           </div>
         </div>
@@ -184,6 +244,73 @@ export function Beranda() {
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </motion.div>
+        </div>
+
+        <SectionDivider />
+      </section>
+
+      <section className="bg-base">
+        <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
+          <header>
+            <motion.p
+              {...fadeUp(0.1)}
+              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
+            >
+              // Lulusan YADIKA
+            </motion.p>
+            <motion.h2
+              {...fadeUp(0.2)}
+              className="mt-2 max-w-3xl font-display text-[clamp(2rem,5vw,4rem)] font-bold leading-[0.9] tracking-[-2px] text-copy"
+            >
+              Apa kata mereka
+              <br />
+              tentang YADIKA?
+            </motion.h2>
+          </header>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {alumniComments.map((item, i) => (
+              <motion.div
+                key={item.name}
+                {...fadeUp(0.2 + i * 0.1)}
+                className="workshop-card flex flex-col px-6 py-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border border-copy/10">
+                    <img
+                      src={`https://picsum.photos/seed/${item.name.split(' ')[0].toLowerCase()}/80/80`}
+                      alt={item.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-base font-bold leading-tight text-copy">
+                      {item.name}
+                    </h3>
+                    <p className="mt-0.5 font-mono text-[11px] tracking-wide text-accent/70">
+                      {item.destination}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 border-t border-copy/5 pt-4">
+                  <p className="font-body text-sm leading-relaxed italic text-muted">
+                    &ldquo;{item.testimonial}&rdquo;
+                  </p>
+                </div>
+
+                <div className="mt-4 flex items-center gap-1.5 self-start rounded-full border border-copy/10 px-3 py-1">
+                  {item.categoryIcon === 'globe' && <FiGlobe className="h-3 w-3 text-accent/70" />}
+                  {item.categoryIcon === 'book' && <FiBook className="h-3 w-3 text-accent/70" />}
+                  {item.categoryIcon === 'star' && <FiStar className="h-3 w-3 text-accent/70" />}
+                  <span className="font-mono text-[10px] tracking-wider text-accent/70">
+                    {item.category}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <SectionDivider />
