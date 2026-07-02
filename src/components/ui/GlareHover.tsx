@@ -1,4 +1,22 @@
-import './GlareHover.css';
+import type { CSSProperties, ReactNode } from 'react'
+import './GlareHover.css'
+
+type GlareHoverProps = {
+  width?: string | number
+  height?: string | number
+  background?: string
+  borderRadius?: string | number
+  borderColor?: string
+  children?: ReactNode
+  glareColor?: string
+  glareOpacity?: number
+  glareAngle?: number
+  glareSize?: number
+  transitionDuration?: number
+  playOnce?: boolean
+  className?: string
+  style?: CSSProperties
+}
 
 const GlareHover = ({
   width = '500px',
@@ -14,8 +32,8 @@ const GlareHover = ({
   transitionDuration = 650,
   playOnce = false,
   className = '',
-  style = {}
-}) => {
+  style = {},
+}: GlareHoverProps) => {
   const hex = glareColor.replace('#', '');
   let rgba = glareColor;
   if (/^[0-9A-Fa-f]{6}$/.test(hex)) {
