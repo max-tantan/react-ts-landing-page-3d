@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider } from '../components'
+import { CornerBrackets, SectionDivider, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 type Student = {
@@ -75,33 +75,46 @@ const news: NewsItem[] = [
 
 function StudentCard({ student, index }: { student: Student; index: number }) {
   return (
-    <motion.article
-      {...fadeUp(0.2 + index * 0.1)}
-      className="workshop-card flex flex-col overflow-hidden"
+    <GlareHover
+      width="100%"
+      background="#2C2721"
+      borderColor="rgba(245, 237, 224, 0.06)"
+      borderRadius="0"
+      glareColor="#0284C7"
+      glareOpacity={0.2}
+      glareAngle={-30}
+      glareSize={250}
+      transitionDuration={600}
+      style={{ display: 'block', height: 'auto' }}
     >
-      <div className="aspect-[4/5] overflow-hidden">
-        <img
-          src={student.image}
-          alt={student.name}
-          loading="lazy"
-          className="h-full w-full object-cover transition-all hover:scale-105"
-        />
-      </div>
-      <div className="flex flex-1 flex-col px-5 py-5">
-        <div className="flex items-center gap-2">
-          <span className="tool-tag">{student.angkatan}</span>
-          <span className="font-mono text-[10px] tracking-wide text-muted/60">
-            {student.program}
-          </span>
+      <motion.article
+        {...fadeUp(0.2 + index * 0.1)}
+        className="flex flex-col"
+      >
+        <div className="aspect-[4/5] overflow-hidden">
+          <img
+            src={student.image}
+            alt={student.name}
+            loading="lazy"
+            className="h-full w-full object-cover transition-all hover:scale-105"
+          />
         </div>
-        <h3 className="mt-3 font-display text-lg font-bold text-copy">
-          {student.name}
-        </h3>
-        <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
-          {student.achievement}
-        </p>
-      </div>
-    </motion.article>
+        <div className="flex flex-1 flex-col px-5 py-5">
+          <div className="flex items-center gap-2">
+            <span className="tool-tag">{student.angkatan}</span>
+            <span className="font-mono text-[10px] tracking-wide text-muted/60">
+              {student.program}
+            </span>
+          </div>
+          <h3 className="mt-3 font-display text-lg font-bold text-copy">
+            {student.name}
+          </h3>
+          <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
+            {student.achievement}
+          </p>
+        </div>
+      </motion.article>
+    </GlareHover>
   )
 }
 

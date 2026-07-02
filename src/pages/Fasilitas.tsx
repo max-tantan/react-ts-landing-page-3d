@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CornerBrackets, SectionDivider } from '../components'
+import { CornerBrackets, SectionDivider, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const facilities = [
@@ -84,21 +84,34 @@ export function Fasilitas() {
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {facilities.map((item, i) => (
-            <motion.div
+            <GlareHover
               key={item.title}
-              {...fadeUp(0.2 + i * 0.1)}
-              className="workshop-card px-6 py-6"
+              width="100%"
+              background="#2C2721"
+              borderColor="rgba(245, 237, 224, 0.06)"
+              borderRadius="0"
+              glareColor="#0284C7"
+              glareOpacity={0.2}
+              glareAngle={-30}
+              glareSize={250}
+              transitionDuration={600}
+              style={{ display: 'block', height: 'auto' }}
             >
-              <div className="flex h-10 w-10 items-center justify-center bg-accent/10">
-                {item.icon}
-              </div>
-              <h3 className="mt-4 font-display text-lg font-bold text-copy">
-                {item.title}
-              </h3>
-              <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
-                {item.desc}
-              </p>
-            </motion.div>
+              <motion.div
+                {...fadeUp(0.2 + i * 0.1)}
+                className="px-6 py-6"
+              >
+                <div className="flex h-10 w-10 items-center justify-center bg-accent/10">
+                  {item.icon}
+                </div>
+                <h3 className="mt-4 font-display text-lg font-bold text-copy">
+                  {item.title}
+                </h3>
+                <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
+                  {item.desc}
+                </p>
+              </motion.div>
+            </GlareHover>
           ))}
         </div>
       </div>

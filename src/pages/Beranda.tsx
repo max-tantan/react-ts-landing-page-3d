@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiVuedotjs } from 'react-icons/si'
 import { FiGlobe, FiBook, FiStar } from 'react-icons/fi'
-import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop } from '../components'
+import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const reasons = [
@@ -207,21 +207,34 @@ export function Beranda() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {reasons.map((item, i) => (
-              <motion.div
+              <GlareHover
                 key={item.title}
-                {...fadeUp(0.2 + i * 0.1)}
-                className="workshop-card flex flex-col px-6 py-6"
+                width="100%"
+                background="#2C2721"
+                borderColor="rgba(245, 237, 224, 0.06)"
+                borderRadius="0"
+                glareColor="#0284C7"
+                glareOpacity={0.2}
+                glareAngle={-30}
+                glareSize={250}
+                transitionDuration={600}
+                style={{ display: 'block', height: 'auto' }}
               >
-                <span className="font-mono text-[11px] tracking-wider text-accent/60">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <h3 className="mt-3 font-display text-xl font-bold leading-tight tracking-[-0.5px] text-copy">
-                  {item.title}
-                </h3>
-                <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
-                  {item.body}
-                </p>
-              </motion.div>
+                <motion.div
+                  {...fadeUp(0.2 + i * 0.1)}
+                  className="flex flex-col px-6 py-6"
+                >
+                  <span className="font-mono text-[11px] tracking-wider text-accent/60">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="mt-3 font-display text-xl font-bold leading-tight tracking-[-0.5px] text-copy">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 font-body text-sm font-light leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </motion.div>
+              </GlareHover>
             ))}
           </div>
 
@@ -270,45 +283,58 @@ export function Beranda() {
 
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {alumniComments.map((item, i) => (
-              <motion.div
+              <GlareHover
                 key={item.name}
-                {...fadeUp(0.2 + i * 0.1)}
-                className="workshop-card flex flex-col px-6 py-6"
+                width="100%"
+                background="#2C2721"
+                borderColor="rgba(245, 237, 224, 0.06)"
+                borderRadius="0"
+                glareColor="#0284C7"
+                glareOpacity={0.2}
+                glareAngle={-30}
+                glareSize={250}
+                transitionDuration={600}
+                style={{ display: 'block', height: 'auto' }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border border-copy/10">
-                    <img
-                      src={`https://picsum.photos/seed/${item.name.split(' ')[0].toLowerCase()}/80/80`}
-                      alt={item.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
+                <motion.div
+                  {...fadeUp(0.2 + i * 0.1)}
+                  className="flex flex-col px-6 py-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="h-10 w-10 flex-shrink-0 overflow-hidden rounded-full border border-copy/10">
+                      <img
+                        src={`https://picsum.photos/seed/${item.name.split(' ')[0].toLowerCase()}/80/80`}
+                        alt={item.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-display text-base font-bold leading-tight text-copy">
+                        {item.name}
+                      </h3>
+                      <p className="mt-0.5 font-mono text-[11px] tracking-wide text-accent/70">
+                        {item.destination}
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-base font-bold leading-tight text-copy">
-                      {item.name}
-                    </h3>
-                    <p className="mt-0.5 font-mono text-[11px] tracking-wide text-accent/70">
-                      {item.destination}
+
+                  <div className="mt-4 border-t border-copy/5 pt-4">
+                    <p className="font-body text-sm leading-relaxed italic text-muted">
+                      &ldquo;{item.testimonial}&rdquo;
                     </p>
                   </div>
-                </div>
 
-                <div className="mt-4 border-t border-copy/5 pt-4">
-                  <p className="font-body text-sm leading-relaxed italic text-muted">
-                    &ldquo;{item.testimonial}&rdquo;
-                  </p>
-                </div>
-
-                <div className="mt-4 flex items-center gap-1.5 self-start rounded-full border border-copy/10 px-3 py-1">
-                  {item.categoryIcon === 'globe' && <FiGlobe className="h-3 w-3 text-accent/70" />}
-                  {item.categoryIcon === 'book' && <FiBook className="h-3 w-3 text-accent/70" />}
-                  {item.categoryIcon === 'star' && <FiStar className="h-3 w-3 text-accent/70" />}
-                  <span className="font-mono text-[10px] tracking-wider text-accent/70">
-                    {item.category}
-                  </span>
-                </div>
-              </motion.div>
+                  <div className="mt-4 flex items-center gap-1.5 self-start rounded-full border border-copy/10 px-3 py-1">
+                    {item.categoryIcon === 'globe' && <FiGlobe className="h-3 w-3 text-accent/70" />}
+                    {item.categoryIcon === 'book' && <FiBook className="h-3 w-3 text-accent/70" />}
+                    {item.categoryIcon === 'star' && <FiStar className="h-3 w-3 text-accent/70" />}
+                    <span className="font-mono text-[10px] tracking-wider text-accent/70">
+                      {item.category}
+                    </span>
+                  </div>
+                </motion.div>
+              </GlareHover>
             ))}
           </div>
         </div>

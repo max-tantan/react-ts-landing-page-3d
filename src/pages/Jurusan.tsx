@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, CornerBrackets, SectionDivider } from '../components'
+import { ArrowUpRight, CornerBrackets, SectionDivider, GlareHover } from '../components'
 import type { ProgramCard } from '../types'
 import { fadeUp } from '../hooks/useFadeUp'
 
@@ -41,44 +41,57 @@ const programs: ProgramCard[] = [
 
 function ProgramCardItem({ title, body, tags, code, icon }: ProgramCard) {
   return (
-    <motion.article
-      {...fadeUp(0.2)}
-      className="workshop-card flex flex-col"
+    <GlareHover
+      width="100%"
+      background="#2C2721"
+      borderColor="rgba(245, 237, 224, 0.06)"
+      borderRadius="0"
+      glareColor="#0284C7"
+      glareOpacity={0.2}
+      glareAngle={-30}
+      glareSize={250}
+      transitionDuration={600}
+      style={{ display: 'block', height: 'auto' }}
     >
-      <div className="flex items-center gap-4 border-b border-copy/5 px-6 py-3">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-accent/10">
-            {icon}
+      <motion.article
+        {...fadeUp(0.2)}
+        className="flex flex-col"
+      >
+        <div className="flex items-center gap-4 border-b border-copy/5 px-6 py-3">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center bg-accent/10">
+              {icon}
+            </div>
+            <span className="tool-tag">{code}</span>
           </div>
-          <span className="tool-tag">{code}</span>
+          <div className="ml-auto flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="font-mono text-[10px] tracking-wide text-muted/70"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="ml-auto flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="font-mono text-[10px] tracking-wide text-muted/70"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
 
-      <div className="flex flex-1 flex-col px-6 py-5">
-        <h3 className="font-display text-2xl font-bold leading-tight tracking-[-1px] text-copy md:text-3xl">
-          {title}
-        </h3>
-        <p className="mt-3 max-w-[36ch] font-body text-sm font-light leading-relaxed text-muted">
-          {body}
-        </p>
-        <div className="mt-auto pt-6">
-          <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent">
-            Pelajari selengkapnya
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </span>
+        <div className="flex flex-1 flex-col px-6 py-5">
+          <h3 className="font-display text-2xl font-bold leading-tight tracking-[-1px] text-copy md:text-3xl">
+            {title}
+          </h3>
+          <p className="mt-3 max-w-[36ch] font-body text-sm font-light leading-relaxed text-muted">
+            {body}
+          </p>
+          <div className="mt-auto pt-6">
+            <span className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent">
+              Pelajari selengkapnya
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </span>
+          </div>
         </div>
-      </div>
-    </motion.article>
+      </motion.article>
+    </GlareHover>
   )
 }
 

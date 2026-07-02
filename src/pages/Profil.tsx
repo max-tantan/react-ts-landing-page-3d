@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery } from '../components'
+import { CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery, GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const sejarah = [
@@ -88,42 +88,55 @@ export function Profil() {
             </div>
           </motion.div>
 
-          <motion.div
-            {...fadeUp(0.4)}
-            className="workshop-card px-6 py-6"
+          <GlareHover
+            width="100%"
+            background="#2C2721"
+            borderColor="rgba(245, 237, 224, 0.06)"
+            borderRadius="0"
+            glareColor="#0284C7"
+            glareOpacity={0.2}
+            glareAngle={-30}
+            glareSize={250}
+            transitionDuration={600}
+            style={{ display: 'block', height: 'auto' }}
           >
-            <h3 className="font-display text-lg font-bold text-copy">
-              Visi & Misi
-            </h3>
-            <div className="mt-4">
-              <p className="font-mono text-[11px] tracking-wider text-accent/60">
-                VISI
-              </p>
-              <p className="mt-1 font-body text-sm leading-relaxed text-copy/90">
-                Menjadi sekolah kejuruan unggulan yang menghasilkan lulusan
-                berdaya saing global, berkarakter, dan siap menghadapi
-                tantangan industri 4.0.
-              </p>
-            </div>
-            <div className="mt-5">
-              <p className="font-mono text-[11px] tracking-wider text-accent/60">
-                MISI
-              </p>
-              <ul className="mt-1 space-y-2">
-                {[
-                  'Menyelenggarakan pendidikan vokasi berbasis industri',
-                  'Mengembangkan kompetensi siswa sesuai kebutuhan dunia kerja',
-                  'Menjalin kemitraan dengan dunia usaha dan industri',
-                  'Membentuk karakter siswa yang disiplin dan profesional',
-                ].map((m) => (
-                  <li key={m} className="flex gap-2 font-body text-sm text-muted">
-                    <span className="mt-1 block h-1 w-1 shrink-0 rounded-full bg-accent/50" />
-                    {m}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+            <motion.div
+              {...fadeUp(0.4)}
+              className="px-6 py-6"
+            >
+              <h3 className="font-display text-lg font-bold text-copy">
+                Visi & Misi
+              </h3>
+              <div className="mt-4">
+                <p className="font-mono text-[11px] tracking-wider text-accent/60">
+                  VISI
+                </p>
+                <p className="mt-1 font-body text-sm leading-relaxed text-copy/90">
+                  Menjadi sekolah kejuruan unggulan yang menghasilkan lulusan
+                  berdaya saing global, berkarakter, dan siap menghadapi
+                  tantangan industri 4.0.
+                </p>
+              </div>
+              <div className="mt-5">
+                <p className="font-mono text-[11px] tracking-wider text-accent/60">
+                  MISI
+                </p>
+                <ul className="mt-1 space-y-2">
+                  {[
+                    'Menyelenggarakan pendidikan vokasi berbasis industri',
+                    'Mengembangkan kompetensi siswa sesuai kebutuhan dunia kerja',
+                    'Menjalin kemitraan dengan dunia usaha dan industri',
+                    'Membentuk karakter siswa yang disiplin dan profesional',
+                  ].map((m) => (
+                    <li key={m} className="flex gap-2 font-body text-sm text-muted">
+                      <span className="mt-1 block h-1 w-1 shrink-0 rounded-full bg-accent/50" />
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </GlareHover>
         </div>
 
         <motion.div {...fadeUp(0.5)} className="mt-10">
