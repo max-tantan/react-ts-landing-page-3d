@@ -10,3 +10,4 @@ export { CornerBrackets, BottomBrackets, SectionDivider } from './sections/Scaff
 export { ArrowUpRight } from './ui/icons/ArrowUpRight'
 export { Play } from './ui/icons/Play'
 export { default as GlareHover } from './ui/GlareHover'
+export { ScrollToTop } from './ScrollToTop'

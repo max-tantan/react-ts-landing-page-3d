@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Layout } from './components'
+import { Layout, ScrollToTop } from './components'
 import { Beranda } from './pages/Beranda'
 import { Profil } from './pages/Profil'
 import { Jurusan } from './pages/Jurusan'
@@ -10,6 +10,7 @@ import { Berita } from './pages/Berita'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Beranda />} />
