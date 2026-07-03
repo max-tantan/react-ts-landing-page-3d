@@ -5,7 +5,9 @@
   --color-surf: #2C2721;
   --color-copy: #F5EDE0;
   --color-accent: #0284C7;
+  --color-accent-hover: #0369a1;
   --color-muted: #78716C;
+  --color-error: #EF4444;
   --font-display: "Sora", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -17,17 +19,17 @@ body {
 }
 
 .glass-nav {
-  background: rgba(44, 39, 33, 0.7);
+  background: color-mix(in srgb, var(--color-surf) 70%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(245, 237, 224, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-copy) 6%, transparent);
 }
 
 .glass-surface {
-  background: rgba(44, 39, 33, 0.5);
+  background: color-mix(in srgb, var(--color-surf) 50%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(245, 237, 224, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-copy) 6%, transparent);
 }
 
 @utility tool-tag {
@@ -39,12 +41,12 @@ body {
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
   color: var(--color-accent);
-  border: 1px solid rgba(2, 132, 199, 0.2);
-  background: rgba(2, 132, 199, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
 }
 
 @utility workshop-card {
   background: var(--color-surf);
-  border: 1px solid rgba(245, 237, 224, 0.06);
+  border: 1px solid color-mix(in srgb, var(--color-copy) 6%, transparent);
   position: relative;
 }

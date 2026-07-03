@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiVuedotjs } from 'react-icons/si'
 import { FiGlobe, FiBook, FiStar } from 'react-icons/fi'
-import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop, GlareHover } from '../components'
+import { Hero, CornerBrackets, SectionDivider, ArrowUpRight, LogoLoop, GlareHover, SpecimenLabel } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const reasons = [
@@ -102,11 +102,10 @@ export function Beranda() {
           <CornerBrackets className="relative mb-16 h-6" />
 
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Sambutan Kepala Sekolah
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Sambutan Kepala Sekolah
+              </SpecimenLabel>
             </motion.p>
           </header>
 
@@ -189,11 +188,10 @@ export function Beranda() {
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Mengapa YADIKA
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Mengapa YADIKA
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -225,7 +223,7 @@ export function Beranda() {
                   className="flex flex-col px-6 py-6"
                 >
                   <span className="font-mono text-[11px] tracking-wider text-accent/60">
-                    {String(i + 1).padStart(2, '0')}
+                    {['KARIR', 'INDUSTRI', 'FASILITAS', 'PENGAJAR'][i]}
                   </span>
                   <h3 className="mt-3 font-display text-xl font-bold leading-tight tracking-[-0.5px] text-copy">
                     {item.title}
@@ -244,7 +242,7 @@ export function Beranda() {
           >
             <Link
               to="/jurusan"
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Lihat Program Keahlian
               <ArrowUpRight className="h-4 w-4" />
@@ -265,11 +263,10 @@ export function Beranda() {
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Lulusan YADIKA
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Lulusan YADIKA
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}

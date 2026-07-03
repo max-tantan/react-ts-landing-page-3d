@@ -104,4 +104,33 @@ The corner-bracket motif risks feeling gimmicky if over-applied. Mitigation: use
 
 ---
 
+## Halaman Detail Berita
+
+Halaman `/berita/:slug` untuk menampilkan detail artikel berita dengan layout artikel bacaan.
+
+### Layout
+- Back link ke `/berita`
+- Header: category badge, tanggal, estimated reading time, judul (BlurText), penulis
+- Featured image (full-width, max-h-96) dengan border overlay
+- Body artikel: `font-body text-base md:text-lg leading-[1.85]`, max-w-3xl
+- Separator tipis antar bagian
+- **Berita Lainnya** — 3 artikel lain sebagai card (GlareHover), skip artikel aktif
+- 404 state jika slug tidak ditemukan
+
+### Data
+Data berita dipindah ke `src/data/berita.json` dengan field: `id`, `slug`, `date`, `category`, `title`, `excerpt`, `author`, `image`, `content` (array of `{subtitle, text}`).
+
+### Komponen
+- `BeritaDetail.tsx` — halaman artikel baru dengan route `/berita/:slug`
+- Update `Berita.tsx` — ganti hardcoded array dengan import JSON, tambah `Link` ke detail
+- Tipe `Artikel` dan `ArticleContent` di `src/types/index.ts`
+
+### Design Notes
+- Mengikuti design token yang ada (`bg-base`, `bg-surf`, `text-copy`, `text-muted`, `accent`)
+- Font: `font-display` (Sora) untuk judul, `font-body` (Space Grotesk) untuk body
+- Animasi: `framer-motion` (fadeUp) untuk scroll reveals
+- Data statis dari JSON import — bundle-time, no API
+
+---
+
 *Plan v1 — ready for review before building.*

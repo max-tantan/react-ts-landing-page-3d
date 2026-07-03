@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { BlurText, CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, GlareHover, SpecimenLabel } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const facilities = [
@@ -150,11 +150,10 @@ export function Fasilitas() {
           <CornerBrackets className="relative mb-16 h-6" />
 
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Fasilitas
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Fasilitas
+              </SpecimenLabel>
             </motion.p>
             <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
               <BlurText
@@ -214,11 +213,10 @@ export function Fasilitas() {
       {/* ─── Galeri ─── */}
       <section className="bg-base pb-28">
         <div className="px-6 md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Galeri
+          <motion.p {...fadeUp(0.1)}>
+            <SpecimenLabel variant="narrative">
+              Galeri
+            </SpecimenLabel>
           </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
             <BlurText
@@ -234,9 +232,9 @@ export function Fasilitas() {
             <div key={row.category} className={ri === 0 ? 'mt-12' : 'mt-16'}>
               <motion.p
                 {...fadeUp(0.1)}
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-copy"
+                className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted/60"
               >
-                // {row.category}
+                {row.category}
               </motion.p>
 
               <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">

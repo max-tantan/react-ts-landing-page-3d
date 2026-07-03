@@ -16,8 +16,8 @@ export function Layout() {
           speed={0.6}
           scale={1.5}
           brightness={1.0}
-          color1="#87CEEB"
-          color2="#0284C7"
+          color1="#0284C7"
+          color2="#161310"
           noiseFrequency={2.5}
           noiseAmplitude={1.0}
           bandHeight={0.5}

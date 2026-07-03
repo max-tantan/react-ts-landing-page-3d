@@ -6,6 +6,7 @@ import {
   SectionDivider,
   ArrowUpRight,
   GlareHover,
+  SpecimenLabel,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import pplgData from '../data/pplg.json'
@@ -42,7 +43,7 @@ export function JurusanDetail() {
           </p>
           <Link
             to="/jurusan"
-            className="mt-8 inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+            className="mt-8 inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
           >
             Kembali ke Program Keahlian
             <ArrowUpRight className="h-4 w-4" />
@@ -60,16 +61,15 @@ export function JurusanDetail() {
           <CornerBrackets className="relative mb-16 h-6" />
 
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // {data.code}
-              {data.subtitle && (
-                <span className="ml-3 tracking-wider text-copy/10">
-                  ({data.subtitle})
-                </span>
-              )}
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                {data.code}
+                {data.subtitle && (
+                  <span className="ml-2 tracking-wider text-accent/40 normal-case">
+                    ({data.subtitle})
+                  </span>
+                )}
+              </SpecimenLabel>
             </motion.p>
             <div className="mt-2 max-w-4xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
               <BlurText
@@ -97,11 +97,10 @@ export function JurusanDetail() {
           <CornerBrackets className="relative mb-16 h-6" />
 
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Sambutan
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Sambutan
+              </SpecimenLabel>
             </motion.p>
           </header>
 
@@ -141,19 +140,16 @@ export function JurusanDetail() {
             </motion.div>
           </div>
         </div>
-
-        <SectionDivider />
       </section>
 
       {/* ─── APA ITU ─── */}
       <section className="bg-base py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Tentang
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Tentang
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.9] tracking-[-2px] text-copy">
             <BlurText
               text={`Apa itu ${data.code}?`}
@@ -177,19 +173,16 @@ export function JurusanDetail() {
             ))}
           </motion.div>
         </div>
-
-        <SectionDivider />
       </section>
 
       {/* ─── KURIKULUM ─── */}
       <section className="bg-base py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Kurikulum
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Kurikulum
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.9] tracking-[-2px] text-copy">
             <BlurText
               text="Apa yang akan kamu pelajari?"
@@ -254,12 +247,11 @@ export function JurusanDetail() {
       {/* ─── PROSPEK KARIR ─── */}
       <section className="bg-base py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Prospek Karir
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Prospek Karir
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.9] tracking-[-2px] text-copy">
             <BlurText
               text="Peluang setelah lulus"
@@ -325,12 +317,11 @@ export function JurusanDetail() {
       {/* ─── GALERI KEGIATAN ─── */}
       <section className="bg-base py-24 md:py-32">
         <div className="px-6 md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Galeri Kegiatan
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Galeri Kegiatan
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[0.9] tracking-[-2px] text-copy">
             <BlurText
               text="Momen & aktivitas"
@@ -388,19 +379,18 @@ export function JurusanDetail() {
       {/* ─── CTA ─── */}
       <section className="bg-base pb-28">
         <div className="px-6 text-center md:px-12 lg:px-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Tertarik?
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="action">
+                Tertarik?
+              </SpecimenLabel>
+            </motion.p>
           <h2 className="mt-4 font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold leading-[0.9] tracking-[-1.5px] text-copy">
             Mulai perjalananmu bersama {data.code}
           </h2>
           <motion.div {...fadeUp(0.3)} className="mt-8">
             <Link
               to="/jurusan"
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Jelajahi Program Lainnya
               <ArrowUpRight className="h-4 w-4" />

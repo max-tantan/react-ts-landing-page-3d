@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination, SpecimenLabel } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import prestasiData from '../data/prestasi.json'
 import beritaData from '../data/berita.json'
@@ -110,7 +110,7 @@ function NewsSection({ item, index }: { item: Artikel; index: number }) {
         </p>
         <Link
           to={`/berita/${item.slug}`}
-          className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent transition-colors hover:text-sky-400"
+          className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-accent transition-colors hover:text-accent-hover"
         >
           Baca selengkapnya
           <svg
@@ -174,12 +174,11 @@ export function Berita() {
         <CornerBrackets className="relative mb-16 h-6" />
 
         <header>
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Berita & Kegiatan
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Berita &amp; Kegiatan
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
             <BlurText
               text="Kabar terbaru"
@@ -201,12 +200,11 @@ export function Berita() {
         <SectionDivider />
 
         <div className="mt-16">
-          <motion.p
-            {...fadeUp(0.3)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Prestasi Siswa Terbaik
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Prestasi Siswa Terbaik
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
             <BlurText
               text="Siswa terbaik"
@@ -237,11 +235,10 @@ export function Berita() {
       </div>
 
       <div className="px-6 md:px-12 lg:px-16">
-        <motion.p
-          {...fadeUp(0.1)}
-          className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-        >
-          // Berita Terkini
+        <motion.p {...fadeUp(0.1)}>
+          <SpecimenLabel variant="narrative">
+            Berita Terkini
+          </SpecimenLabel>
         </motion.p>
         <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
           <BlurText
@@ -273,12 +270,11 @@ export function Berita() {
 
       <div className="px-6 pb-16 md:px-12 lg:px-16">
         <div className="mt-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Prestasi Siswa & Guru
-          </motion.p>
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Prestasi Siswa &amp; Guru
+              </SpecimenLabel>
+            </motion.p>
           <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
             <BlurText
               text="Kebanggaan"

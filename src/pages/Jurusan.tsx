@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BlurText, ArrowUpRight, CornerBrackets, SectionDivider, GlareHover } from '../components'
+import { ArrowUpRight, CornerBrackets, SectionDivider, GlareHover, SpecimenLabel } from '../components'
 import type { ProgramCard } from '../types'
 import { fadeUp } from '../hooks/useFadeUp'
 
@@ -110,28 +110,19 @@ export function Jurusan() {
         <CornerBrackets className="relative mb-16 h-6" />
 
         <header>
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Program Keahlian
+          <motion.p {...fadeUp(0.1)}>
+            <SpecimenLabel variant="data">
+              Program Keahlian
+            </SpecimenLabel>
           </motion.p>
-          <div className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
-            <BlurText
-              text="Pilih jalur"
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-              className="my-0"
-            />
-            <BlurText
-              text="masa depanmu"
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-              className="my-0"
-            />
-          </div>
+          <motion.h1
+            {...fadeUp(0.2)}
+            className="mt-2 max-w-4xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
+          >
+            Pilih jalur
+            <br />
+            masa depanmu
+          </motion.h1>
         </header>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -147,28 +138,19 @@ export function Jurusan() {
     <section className="bg-base py-24 md:py-32">
       <div className="px-6 md:px-12 lg:px-16">
         <header className="mb-16">
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Yang Dipelajari
+          <motion.p {...fadeUp(0.1)}>
+            <SpecimenLabel variant="narrative">
+              Yang Dipelajari
+            </SpecimenLabel>
           </motion.p>
-          <div className="mt-2 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
-            <BlurText
-              text="Apa yang akan"
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-              className="my-0"
-            />
-            <BlurText
-              text="kamu pelajari?"
-              delay={150}
-              animateBy="words"
-              direction="bottom"
-              className="my-0"
-            />
-          </div>
+          <motion.h2
+            {...fadeUp(0.2)}
+            className="mt-2 max-w-4xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy"
+          >
+            Apa yang akan
+            <br />
+            kamu pelajari?
+          </motion.h2>
         </header>
 
         <div className="space-y-20 md:space-y-28">

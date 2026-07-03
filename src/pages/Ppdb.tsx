@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CornerBrackets, SectionDivider, BottomBrackets, ArrowUpRight } from '../components'
+import { CornerBrackets, SectionDivider, BottomBrackets, ArrowUpRight, SpecimenLabel } from '../components'
 import { GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import type { Pendaftar } from '../types'
@@ -132,11 +132,10 @@ export function Ppdb() {
           <CornerBrackets className="relative mb-16 h-6" />
 
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // PPDB {new Date().getFullYear()}
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="action">
+                PPDB {new Date().getFullYear()}
+              </SpecimenLabel>
             </motion.p>
             <motion.h1
               {...fadeUp(0.2)}
@@ -155,7 +154,7 @@ export function Ppdb() {
             <motion.div {...fadeUp(0.4)} className="mt-8 flex flex-wrap gap-4">
               <button
                 onClick={scrollToForm}
-                className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+                className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
               >
                 Daftar Sekarang
                 <ArrowUpRight className="h-4 w-4" />
@@ -171,11 +170,10 @@ export function Ppdb() {
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Persyaratan
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Persyaratan
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -204,19 +202,16 @@ export function Ppdb() {
             ))}
           </motion.div>
         </div>
-
-        <SectionDivider />
       </section>
 
       {/* ─── Alur Pendaftaran ─── */}
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Alur Pendaftaran
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Alur Pendaftaran
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -269,11 +264,10 @@ export function Ppdb() {
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Jadwal Seleksi
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Jadwal Seleksi
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -308,19 +302,16 @@ export function Ppdb() {
             </table>
           </div>
         </div>
-
-        <SectionDivider />
       </section>
 
       {/* ─── Program Keahlian ─── */}
       <section className="bg-base">
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Program Keahlian
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="data">
+                Program Keahlian
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -363,7 +354,7 @@ export function Ppdb() {
           <motion.div {...fadeUp(0.5)} className="mt-10">
             <button
               onClick={scrollToForm}
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Daftar Sekarang
               <ArrowUpRight className="h-4 w-4" />
@@ -378,11 +369,10 @@ export function Ppdb() {
       <section id="form-pendaftaran" className="bg-base">
         <div className="relative px-6 pt-20 pb-20 md:px-12 lg:px-16">
           <header>
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Formulir Pendaftaran
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="action">
+                Formulir Pendaftaran
+              </SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -403,7 +393,7 @@ export function Ppdb() {
             {/* Nama */}
             <div>
               <label htmlFor="nama" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Nama Lengkap <span className="text-red-400">*</span>
+                Nama Lengkap <span className="text-error">*</span>
               </label>
               <input
                 id="nama"
@@ -412,18 +402,18 @@ export function Ppdb() {
                 value={form.nama}
                 onChange={handleChange}
                 className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                  errors.nama ? 'border-red-400/60' : 'border-copy/10'
+                  errors.nama ? 'border-error/60' : 'border-copy/10'
                 }`}
                 placeholder="Nama lengkap sesuai ijazah"
               />
-              {errors.nama && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.nama}</p>}
+              {errors.nama && <p className="mt-1 font-mono text-[11px] text-error">{errors.nama}</p>}
             </div>
 
             {/* Tempat & Tgl Lahir */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="tempatLahir" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Tempat Lahir <span className="text-red-400">*</span>
+                  Tempat Lahir <span className="text-error">*</span>
                 </label>
                 <input
                   id="tempatLahir"
@@ -432,15 +422,15 @@ export function Ppdb() {
                   value={form.tempatLahir}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.tempatLahir ? 'border-red-400/60' : 'border-copy/10'
+                    errors.tempatLahir ? 'border-error/60' : 'border-copy/10'
                   }`}
                   placeholder="Contoh: Bandung"
                 />
-                {errors.tempatLahir && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.tempatLahir}</p>}
+                {errors.tempatLahir && <p className="mt-1 font-mono text-[11px] text-error">{errors.tempatLahir}</p>}
               </div>
               <div>
                 <label htmlFor="tanggalLahir" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Tanggal Lahir <span className="text-red-400">*</span>
+                  Tanggal Lahir <span className="text-error">*</span>
                 </label>
                 <input
                   id="tanggalLahir"
@@ -449,17 +439,17 @@ export function Ppdb() {
                   value={form.tanggalLahir}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                    errors.tanggalLahir ? 'border-red-400/60' : 'border-copy/10'
+                    errors.tanggalLahir ? 'border-error/60' : 'border-copy/10'
                   }`}
                 />
-                {errors.tanggalLahir && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.tanggalLahir}</p>}
+                {errors.tanggalLahir && <p className="mt-1 font-mono text-[11px] text-error">{errors.tanggalLahir}</p>}
               </div>
             </div>
 
             {/* JK */}
             <div>
               <span className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Jenis Kelamin <span className="text-red-400">*</span>
+                Jenis Kelamin <span className="text-error">*</span>
               </span>
               <div className="mt-2 flex gap-6">
                 {(['L', 'P'] as const).map((val) => (
@@ -476,13 +466,13 @@ export function Ppdb() {
                   </label>
                 ))}
               </div>
-              {errors.jenisKelamin && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.jenisKelamin}</p>}
+              {errors.jenisKelamin && <p className="mt-1 font-mono text-[11px] text-error">{errors.jenisKelamin}</p>}
             </div>
 
             {/* Alamat */}
             <div>
               <label htmlFor="alamat" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Alamat <span className="text-red-400">*</span>
+                Alamat <span className="text-error">*</span>
               </label>
               <textarea
                 id="alamat"
@@ -491,18 +481,18 @@ export function Ppdb() {
                 value={form.alamat}
                 onChange={handleChange}
                 className={`mt-1.5 w-full resize-none border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                  errors.alamat ? 'border-red-400/60' : 'border-copy/10'
+                  errors.alamat ? 'border-error/60' : 'border-copy/10'
                 }`}
                 placeholder="Alamat lengkap sesuai KTP"
               />
-              {errors.alamat && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.alamat}</p>}
+              {errors.alamat && <p className="mt-1 font-mono text-[11px] text-error">{errors.alamat}</p>}
             </div>
 
             {/* No HP & Email */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="noHp" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  No. HP/WA <span className="text-red-400">*</span>
+                  No. HP/WA <span className="text-error">*</span>
                 </label>
                 <input
                   id="noHp"
@@ -511,15 +501,15 @@ export function Ppdb() {
                   value={form.noHp}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.noHp ? 'border-red-400/60' : 'border-copy/10'
+                    errors.noHp ? 'border-error/60' : 'border-copy/10'
                   }`}
                   placeholder="08xxxxxxxxxx"
                 />
-                {errors.noHp && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.noHp}</p>}
+                {errors.noHp && <p className="mt-1 font-mono text-[11px] text-error">{errors.noHp}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Email <span className="text-red-400">*</span>
+                  Email <span className="text-error">*</span>
                 </label>
                 <input
                   id="email"
@@ -528,11 +518,11 @@ export function Ppdb() {
                   value={form.email}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.email ? 'border-red-400/60' : 'border-copy/10'
+                    errors.email ? 'border-error/60' : 'border-copy/10'
                   }`}
                   placeholder="contoh@email.com"
                 />
-                {errors.email && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.email}</p>}
+                {errors.email && <p className="mt-1 font-mono text-[11px] text-error">{errors.email}</p>}
               </div>
             </div>
 
@@ -540,7 +530,7 @@ export function Ppdb() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="asalSekolah" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Asal Sekolah <span className="text-red-400">*</span>
+                  Asal Sekolah <span className="text-error">*</span>
                 </label>
                 <input
                   id="asalSekolah"
@@ -549,15 +539,15 @@ export function Ppdb() {
                   value={form.asalSekolah}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.asalSekolah ? 'border-red-400/60' : 'border-copy/10'
+                    errors.asalSekolah ? 'border-error/60' : 'border-copy/10'
                   }`}
                   placeholder="Nama SMP/MTs asal"
                 />
-                {errors.asalSekolah && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.asalSekolah}</p>}
+                {errors.asalSekolah && <p className="mt-1 font-mono text-[11px] text-error">{errors.asalSekolah}</p>}
               </div>
               <div>
                 <label htmlFor="nisn" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  NISN <span className="text-red-400">*</span>
+                  NISN <span className="text-error">*</span>
                 </label>
                 <input
                   id="nisn"
@@ -567,18 +557,18 @@ export function Ppdb() {
                   value={form.nisn}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.nisn ? 'border-red-400/60' : 'border-copy/10'
+                    errors.nisn ? 'border-error/60' : 'border-copy/10'
                   }`}
                   placeholder="10 digit NISN"
                 />
-                {errors.nisn && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.nisn}</p>}
+                {errors.nisn && <p className="mt-1 font-mono text-[11px] text-error">{errors.nisn}</p>}
               </div>
             </div>
 
             {/* Tahun Lulus */}
             <div>
               <label htmlFor="tahunLulus" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Tahun Lulus <span className="text-red-400">*</span>
+                Tahun Lulus <span className="text-error">*</span>
               </label>
               <select
                 id="tahunLulus"
@@ -586,7 +576,7 @@ export function Ppdb() {
                 value={form.tahunLulus}
                 onChange={handleChange}
                 className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                  errors.tahunLulus ? 'border-red-400/60' : 'border-copy/10'
+                  errors.tahunLulus ? 'border-error/60' : 'border-copy/10'
                 }`}
               >
                 <option value="">— Pilih Tahun Lulus —</option>
@@ -594,14 +584,14 @@ export function Ppdb() {
                   <option key={th} value={th}>{th}</option>
                 ))}
               </select>
-              {errors.tahunLulus && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.tahunLulus}</p>}
+              {errors.tahunLulus && <p className="mt-1 font-mono text-[11px] text-error">{errors.tahunLulus}</p>}
             </div>
 
             {/* Pilihan Jurusan */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="jurusan1" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Jurusan 1 (Pilihan Utama) <span className="text-red-400">*</span>
+                  Jurusan 1 (Pilihan Utama) <span className="text-error">*</span>
                 </label>
                 <select
                   id="jurusan1"
@@ -609,7 +599,7 @@ export function Ppdb() {
                   value={form.jurusan1}
                   onChange={handleChange}
                   className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                    errors.jurusan1 ? 'border-red-400/60' : 'border-copy/10'
+                    errors.jurusan1 ? 'border-error/60' : 'border-copy/10'
                   }`}
                 >
                   <option value="">— Pilih Jurusan —</option>
@@ -617,7 +607,7 @@ export function Ppdb() {
                     <option key={p.code} value={p.code}>{p.code} — {p.name}</option>
                   ))}
                 </select>
-                {errors.jurusan1 && <p className="mt-1 font-mono text-[11px] text-red-400">{errors.jurusan1}</p>}
+                {errors.jurusan1 && <p className="mt-1 font-mono text-[11px] text-error">{errors.jurusan1}</p>}
               </div>
               <div>
                 <label htmlFor="jurusan2" className="block font-mono text-[11px] tracking-wider text-accent/70">
@@ -641,12 +631,12 @@ export function Ppdb() {
             {/* Submit */}
             <div className="border-t border-copy/5 pt-6">
               <p className="mb-4 font-mono text-[11px] tracking-wider text-muted/60">
-                <span className="text-red-400">*</span> = Wajib diisi
+                <span className="text-error">*</span> = Wajib diisi
               </p>
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center gap-2 bg-accent px-8 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700 disabled:opacity-50"
+                className="inline-flex items-center gap-2 bg-accent px-8 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover disabled:opacity-50"
               >
                 {submitting ? 'Mengirim...' : 'Kirim Pendaftaran'}
                 <ArrowUpRight className="h-4 w-4" />
@@ -699,7 +689,7 @@ export function Ppdb() {
                 </p>
                 <button
                   onClick={() => setSubmitted(null)}
-                  className="mt-6 inline-flex items-center gap-2 bg-accent px-6 py-2.5 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+                  className="mt-6 inline-flex items-center gap-2 bg-accent px-6 py-2.5 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
                 >
                   Tutup
                 </button>

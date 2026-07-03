@@ -15,7 +15,7 @@ export function PrestasiCard({ item, index }: { item: PrestasiItem; index: numbe
   return (
     <motion.article
       {...fadeUp(0.2 + index * 0.05)}
-      className="flex flex-col h-full border border-copy/5 bg-[#2C2721]"
+      className="flex flex-col h-full border border-copy/5 bg-surf"
     >
       <div className="aspect-square overflow-hidden">
         <img

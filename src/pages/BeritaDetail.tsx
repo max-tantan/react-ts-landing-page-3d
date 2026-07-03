@@ -6,6 +6,7 @@ import {
   SectionDivider,
   ArrowUpRight,
   GlareHover,
+  SpecimenLabel,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import beritaData from '../data/berita.json'
@@ -46,7 +47,7 @@ export function BeritaDetail() {
           </p>
           <Link
             to="/berita"
-            className="mt-8 inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+            className="mt-8 inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
           >
             Kembali ke Berita
             <ArrowUpRight className="h-4 w-4" />
@@ -177,11 +178,10 @@ export function BeritaDetail() {
       {relatedArticles.length > 0 && (
         <section className="bg-base py-20 md:py-28">
           <div className="px-6 md:px-12 lg:px-16">
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Baca Juga
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Baca Juga
+              </SpecimenLabel>
             </motion.p>
             <div className="mt-1 font-display text-2xl font-bold tracking-[-1px] text-copy md:text-3xl">
               <BlurText
@@ -259,7 +259,7 @@ export function BeritaDetail() {
           <motion.div {...fadeUp(0.2)}>
             <Link
               to="/berita"
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Kembali ke Berita
               <ArrowUpRight className="h-4 w-4" />

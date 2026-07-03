@@ -28,7 +28,7 @@ export function Hero() {
         style={{ width: '100%', height: '100%' }}
       />
 
-      <div className="absolute inset-0 z-[1] bg-base/70" />
+      <div className="absolute inset-0 z-10 bg-base/70" />
 
       <div className="relative z-10 flex min-h-screen flex-col">
         <div className="relative flex flex-1 flex-col items-center justify-center px-6 pt-32">
@@ -63,7 +63,7 @@ export function Hero() {
           >
             <a
               href="#daftar"
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Daftar Sekarang
               <ArrowUpRight className="h-4 w-4" />

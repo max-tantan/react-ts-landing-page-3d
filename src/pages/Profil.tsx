@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { BlurText, CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery, GlareHover } from '../components'
+import { BlurText, CornerBrackets, SectionDivider, ArrowUpRight, CircularGallery, GlareHover, SpecimenLabel } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 
 const sejarah = [
@@ -41,11 +41,10 @@ export function Profil() {
         <CornerBrackets className="relative mb-16 h-6" />
 
         <header>
-          <motion.p
-            {...fadeUp(0.1)}
-            className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-          >
-            // Profil Sekolah
+          <motion.p {...fadeUp(0.1)}>
+            <SpecimenLabel variant="data">
+              Profil Sekolah
+            </SpecimenLabel>
           </motion.p>
           <div className="mt-2 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
             <BlurText
@@ -150,7 +149,7 @@ export function Profil() {
         <motion.div {...fadeUp(0.5)} className="mt-10">
           <Link
             to="/jurusan"
-            className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+            className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
           >
             Jelajahi Program Keahlian
             <ArrowUpRight className="h-4 w-4" />
@@ -171,11 +170,10 @@ export function Profil() {
 
         <div className="relative mx-auto max-w-5xl">
           <header className="mb-16 md:mb-24">
-            <motion.p
-              {...fadeUp(0.1)}
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70"
-            >
-              // Arsip Sejarah
+            <motion.p {...fadeUp(0.1)}>
+              <SpecimenLabel variant="narrative">
+                Arsip Sejarah
+              </SpecimenLabel>
             </motion.p>
             <div className="mt-3 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[0.9] tracking-[-3px] text-copy">
               <BlurText

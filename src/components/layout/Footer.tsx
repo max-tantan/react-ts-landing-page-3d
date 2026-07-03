@@ -43,7 +43,7 @@ export function Footer() {
 
             <NavLink
               to="/ppdb"
-              className="group inline-flex shrink-0 items-center gap-3 bg-accent px-8 py-4 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
+              className="group inline-flex shrink-0 items-center gap-3 bg-accent px-8 py-4 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
               Daftar Sekarang
               <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
