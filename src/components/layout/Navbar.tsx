@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
+import { FiDownload } from 'react-icons/fi'
 import logoSrc from '../../assets/image.png'
 
 const navLinks = [
@@ -49,6 +50,13 @@ export function Navbar() {
             )}
           </NavLink>
         ))}
+        <button
+          type="button"
+          className="mr-3 cursor-default flex items-center gap-1.5 border border-accent/40 px-4 py-2 font-body text-sm font-medium text-accent/60 transition-colors"
+        >
+          <FiDownload className="h-4 w-4" />
+          Brosur
+        </button>
         <NavLink
           to="/ppdb"
           className="mr-0.5 flex items-center gap-1.5 bg-accent px-4 py-2 font-body text-sm font-semibold text-base"
@@ -120,7 +128,14 @@ export function Navbar() {
                 ))}
               </div>
 
-              <div className="px-4 pb-8">
+              <div className="flex flex-col gap-2 px-4 pb-8">
+                <button
+                  type="button"
+                  className="flex items-center justify-center gap-1.5 border border-accent/40 px-4 py-2.5 font-body text-sm font-medium text-accent/60 transition-colors"
+                >
+                  <FiDownload className="h-4 w-4" />
+                  Download Brosur
+                </button>
                 <NavLink
                   to="/ppdb"
                   onClick={() => setOpen(false)}
