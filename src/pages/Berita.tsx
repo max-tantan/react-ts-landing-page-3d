@@ -5,6 +5,7 @@ import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pag
 import { fadeUp } from '../hooks/useFadeUp'
 import prestasiData from '../data/prestasi.json'
 import beritaData from '../data/berita.json'
+import type { Artikel } from '../types'
 
 type Student = {
   name: string
@@ -12,18 +13,6 @@ type Student = {
   angkatan: string
   achievement: string
   image: string
-}
-
-type NewsItem = {
-  id: number
-  slug: string
-  date: string
-  category: string
-  title: string
-  excerpt: string
-  author: string
-  image: string
-  content: string[]
 }
 
 const topStudents: Student[] = [
@@ -70,7 +59,7 @@ function StudentCard({ student, index }: { student: Student; index: number }) {
         {...fadeUp(0.2 + index * 0.1)}
         className="flex flex-col"
       >
-        <div className="aspect-[4/5] overflow-hidden">
+        <div className="aspect-[3/4] overflow-hidden">
           <img
             src={student.image}
             alt={student.name}
@@ -97,7 +86,7 @@ function StudentCard({ student, index }: { student: Student; index: number }) {
   )
 }
 
-function NewsSection({ item, index }: { item: NewsItem; index: number }) {
+function NewsSection({ item, index }: { item: Artikel; index: number }) {
   const isReversed = index % 2 !== 0
 
   return (
@@ -106,7 +95,7 @@ function NewsSection({ item, index }: { item: NewsItem; index: number }) {
       className="grid grid-cols-1 md:grid-cols-2"
     >
       <div
-        className={`flex flex-col justify-center px-6 py-8 md:px-10 md:py-12 ${
+        className={`flex flex-col justify-center px-6 py-8 md:px-12 md:py-14 ${
           isReversed ? 'md:order-2' : ''
         }`}
       >
@@ -145,7 +134,7 @@ function NewsSection({ item, index }: { item: NewsItem; index: number }) {
           src={item.image}
           alt={item.title}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-all duration-500 hover:brightness-110"
         />
         <div className="absolute inset-0 border border-copy/5" />
       </div>
@@ -209,6 +198,8 @@ export function Berita() {
           </div>
         </header>
 
+        <SectionDivider />
+
         <div className="mt-16">
           <motion.p
             {...fadeUp(0.3)}
@@ -271,7 +262,7 @@ export function Berita() {
       </div>
 
       <div className="divide-y divide-copy/5 mt-8">
-        {(beritaData as NewsItem[]).map((item, i) => (
+        {(beritaData as Artikel[]).map((item, i) => (
           <NewsSection key={item.id} item={item} index={i} />
         ))}
       </div>
@@ -329,7 +320,7 @@ export function Berita() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+            className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           >
             {(() => {
               const start = (prestasiPage - 1) * PER_PAGE

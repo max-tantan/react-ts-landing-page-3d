@@ -9,33 +9,22 @@ import {
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
 import beritaData from '../data/berita.json'
+import type { Artikel } from '../types'
 
-type BeritaItem = {
-  id: number
-  slug: string
-  date: string
-  category: string
-  title: string
-  excerpt: string
-  author: string
-  image: string
-  content: string[]
-}
-
-function estimateReadingTime(content: string[]): number {
-  const totalWords = content.reduce((sum, p) => sum + p.split(/\s+/).length, 0)
+function estimateReadingTime(content: Artikel['content']): number {
+  const totalWords = content.reduce((sum, item) => sum + item.text.split(/\s+/).length, 0)
   return Math.max(1, Math.round(totalWords / 200))
 }
 
 function getRelatedArticles(slug: string, limit = 3) {
-  return (beritaData as BeritaItem[])
+  return (beritaData as Artikel[])
     .filter((item) => item.slug !== slug)
     .slice(0, limit)
 }
 
 export function BeritaDetail() {
   const { slug } = useParams<{ slug: string }>()
-  const article = (beritaData as BeritaItem[]).find(
+  const article = (beritaData as Artikel[]).find(
     (item) => item.slug === slug
   )
 
@@ -147,8 +136,10 @@ export function BeritaDetail() {
             <img
               src={article.image}
               alt={article.title}
-              className="max-h-[28rem] w-full object-cover"
+              loading="lazy"
+              className="max-h-[20rem] w-full object-cover transition-all duration-700 hover:scale-[1.02] md:max-h-[28rem]"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-base/20 to-transparent" />
             <div className="absolute inset-0 border border-copy/5" />
           </motion.div>
         </div>
@@ -164,15 +155,17 @@ export function BeritaDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="mx-auto max-w-3xl space-y-6"
+            className="mx-auto max-w-3xl space-y-5 md:space-y-6"
           >
-            {article.content.map((paragraph, i) => (
-              <p
-                key={i}
-                className="font-body text-base leading-[1.85] text-muted md:text-lg"
-              >
-                {paragraph}
-              </p>
+            {article.content.map((item, i) => (
+              <div key={i}>
+                <h3 className="font-mono text-xs font-bold tracking-wider text-copy uppercase">
+                  {item.subtitle}
+                </h3>
+                <p className="mt-2 font-body text-[15px] leading-[1.8] text-muted md:text-lg md:leading-[1.85] text-left">
+                  {item.text}
+                </p>
+              </div>
             ))}
           </motion.div>
         </div>

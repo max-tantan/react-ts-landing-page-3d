@@ -9,10 +9,22 @@
     "author": "Tim Humas SMK YADIKA",
     "image": "https://picsum.photos/seed/ppdb-yadika/1200/600",
     "content": [
-      "SMK YADIKA SOREANG resmi membuka pendaftaran peserta didik baru untuk tahun ajaran 2026/2027. Penerimaan Peserta Didik Baru tahun ini menawarkan tiga program keahlian unggulan yang telah terakreditasi A, yaitu Rekayasa Perangkat Lunak, Perhotelan, dan Akuntansi.",
-      "Kepala SMK YADIKA SOREANG menyampaikan bahwa tahun ini sekolah menyediakan tiga jalur pendaftaran: jalur prestasi bagi calon siswa yang memiliki prestasi akademik maupun non-akademik, jalur reguler untuk umum, dan jalur afirmasi bagi siswa dari keluarga kurang mampu. \"Kami ingin memberikan kesempatan seluas-luasnya bagi putra-putri terbaik bangsa untuk bergabung,\" ujarnya.",
-      "Pendaftaran dapat dilakukan secara online melalui website resmi sekolah di ppdb.smkyadika.sch.id atau datang langsung ke kampus SMK YADIKA SOREANG yang beralamat di Jl. Raya Soreang No. 123, Kabupaten Bandung. Berkas persyaratan meliputi fotokopi rapor, akta kelahiran, KK, dan pas foto terbaru.",
-      "Bagi calon pendaftar yang ingin mengetahui lebih lanjut mengenai program keahlian dan fasilitas sekolah, SMK YADIKA juga mengadakan Open Day setiap hari Sabtu selama masa penerimaan. Pengunjung dapat melihat langsung laboratorium komputer, ruang praktik perhotelan, dan laboratorium akuntansi yang dimiliki sekolah."
+      {
+        "subtitle": "What?",
+        "text": "SMK YADIKA SOREANG resmi membuka pendaftaran peserta didik baru untuk tahun ajaran 2026/2027. Penerimaan Peserta Didik Baru tahun ini menawarkan tiga program keahlian unggulan yang telah terakreditasi A, yaitu Rekayasa Perangkat Lunak, Perhotelan, dan Akuntansi."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Kepala SMK YADIKA SOREANG menyampaikan bahwa tahun ini sekolah menyediakan tiga jalur pendaftaran: jalur prestasi bagi calon siswa yang memiliki prestasi akademik maupun non-akademik, jalur reguler untuk umum, dan jalur afirmasi bagi siswa dari keluarga kurang mampu. \"Kami ingin memberikan kesempatan seluas-luasnya bagi putra-putri terbaik bangsa untuk bergabung,\" ujarnya."
+      },
+      {
+        "subtitle": "Where?",
+        "text": "Pendaftaran dapat dilakukan secara online melalui website resmi sekolah di ppdb.smkyadika.sch.id atau datang langsung ke kampus SMK YADIKA SOREANG yang beralamat di Jl. Raya Soreang No. 123, Kabupaten Bandung. Berkas persyaratan meliputi fotokopi rapor, akta kelahiran, KK, dan pas foto terbaru."
+      },
+      {
+        "subtitle": "How?",
+        "text": "Bagi calon pendaftar yang ingin mengetahui lebih lanjut mengenai program keahlian dan fasilitas sekolah, SMK YADIKA juga mengadakan Open Day setiap hari Sabtu selama masa penerimaan. Pengunjung dapat melihat langsung laboratorium komputer, ruang praktik perhotelan, dan laboratorium akuntansi yang dimiliki sekolah."
+      }
     ]
   },
   {
@@ -25,10 +37,22 @@
     "author": "Tim Humas SMK YADIKA",
     "image": "https://picsum.photos/seed/rpl-juara/1200/600",
     "content": [
-      "Tim Rekayasa Perangkat Lunak SMK YADIKA SOREANG berhasil membawa pulang trophy juara kedua dalam ajang Lomba Aplikasi Mobile Tingkat Provinsi Jawa Barat yang diselenggarakan oleh Dinas Pendidikan Jawa Barat. Kompetisi ini diikuti oleh 45 SMK dari seluruh Jawa Barat.",
-      "Aplikasi yang dikembangkan oleh tim berjudul \"Jelajah Belajar\", sebuah platform pembelajaran interaktif yang dirancang khusus untuk siswa SMK. Aplikasi ini menawarkan fitur-fitur unggulan seperti materi pembelajaran multimedia, kuis interaktif, forum diskusi, dan pelacakan kemajuan belajar secara real-time.",
-      "Ketua tim, Aulia Rahman, mengungkapkan bahwa pengembangan aplikasi memakan waktu kurang lebih tiga bulan. \"Kami belajar banyak selama proses ini, mulai dari perencanaan, UI/UX design, coding, hingga testing. Pengalaman yang sangat berharga untuk bekal kami di dunia kerja nanti,\" tuturnya.",
-      "Pembimbing tim, Bapak Rudi Hermawan, S.Kom., menambahkan bahwa prestasi ini membuktikan kualitas pendidikan di SMK YADIKA. \"Kami sangat bangga dengan kerja keras dan dedikasi siswa-siswi kami. Ini adalah bukti bahwa kurikulum berbasis proyek yang kami terapkan mampu bersaing di tingkat provinsi.\""
+      {
+        "subtitle": "What?",
+        "text": "Tim Rekayasa Perangkat Lunak SMK YADIKA SOREANG berhasil membawa pulang trophy juara kedua dalam ajang Lomba Aplikasi Mobile Tingkat Provinsi Jawa Barat yang diselenggarakan oleh Dinas Pendidikan Jawa Barat. Kompetisi ini diikuti oleh 45 SMK dari seluruh Jawa Barat."
+      },
+      {
+        "subtitle": "What?",
+        "text": "Aplikasi yang dikembangkan oleh tim berjudul \"Jelajah Belajar\", sebuah platform pembelajaran interaktif yang dirancang khusus untuk siswa SMK. Aplikasi ini menawarkan fitur-fitur unggulan seperti materi pembelajaran multimedia, kuis interaktif, forum diskusi, dan pelacakan kemajuan belajar secara real-time."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Ketua tim, Aulia Rahman, mengungkapkan bahwa pengembangan aplikasi memakan waktu kurang lebih tiga bulan. \"Kami belajar banyak selama proses ini, mulai dari perencanaan, UI/UX design, coding, hingga testing. Pengalaman yang sangat berharga untuk bekal kami di dunia kerja nanti,\" tuturnya."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Pembimbing tim, Bapak Rudi Hermawan, S.Kom., menambahkan bahwa prestasi ini membuktikan kualitas pendidikan di SMK YADIKA. \"Kami sangat bangga dengan kerja keras dan dedikasi siswa-siswi kami. Ini adalah bukti bahwa kurikulum berbasis proyek yang kami terapkan mampu bersaing di tingkat provinsi.\""
+      }
     ]
   },
   {
@@ -41,10 +65,22 @@
     "author": "Tim Humas SMK YADIKA",
     "image": "https://picsum.photos/seed/mou-hotel/1200/600",
     "content": [
-      "SMK YADIKA SOREANG resmi menjalin kerjasama strategis dengan Hotel Grand Asia Bandung melalui penandatanganan Memorandum of Understanding (MoU) yang berlangsung di ruang serbaguna hotel. Kerjasama ini mencakup program magang bagi siswa Perhotelan, pelatihan bersama, dan prioritas penyerapan lulusan.",
-      "General Manager Hotel Grand Asia Bandung, Bapak Ahmad Faisal, menyambut baik kerjasama ini. \"Kami melihat kualitas siswa Perhotelan SMK YADIKA sangat menjanjikan. Melalui MoU ini, kami berkomitmen untuk memberikan pengalaman magang yang berkualitas dan menjadi jembatan bagi lulusan terbaik untuk berkarier di industri perhotelan,\" ujarnya.",
-      "Hotel Grand Asia Bandung akan menjadi salah satu mitra industri utama program keahlian Perhotelan. Siswa akan mendapatkan kesempatan magang di berbagai departemen, mulai dari front office, housekeeping, food and beverage service, hingga kitchen. Program magang dirancang selama satu semester penuh agar siswa mendapatkan pengalaman yang komprehensif.",
-      "Kepala Program Keahlian Perhotelan, Ibu Siti Nurjanah, S.Par., M.M., mengatakan bahwa MoU ini merupakan langkah maju dalam meningkatkan kualitas lulusan. \"Dengan mitra industri sekelas Hotel Grand Asia, siswa kami tidak hanya mendapat pengalaman kerja, tetapi juga networking yang sangat berharga untuk masa depan mereka.\""
+      {
+        "subtitle": "What?",
+        "text": "SMK YADIKA SOREANG resmi menjalin kerjasama strategis dengan Hotel Grand Asia Bandung melalui penandatanganan Memorandum of Understanding (MoU) yang berlangsung di ruang serbaguna hotel. Kerjasama ini mencakup program magang bagi siswa Perhotelan, pelatihan bersama, dan prioritas penyerapan lulusan."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "General Manager Hotel Grand Asia Bandung, Bapak Ahmad Faisal, menyambut baik kerjasama ini. \"Kami melihat kualitas siswa Perhotelan SMK YADIKA sangat menjanjikan. Melalui MoU ini, kami berkomitmen untuk memberikan pengalaman magang yang berkualitas dan menjadi jembatan bagi lulusan terbaik untuk berkarier di industri perhotelan,\" ujarnya."
+      },
+      {
+        "subtitle": "Where?",
+        "text": "Hotel Grand Asia Bandung akan menjadi salah satu mitra industri utama program keahlian Perhotelan. Siswa akan mendapatkan kesempatan magang di berbagai departemen, mulai dari front office, housekeeping, food and beverage service, hingga kitchen. Program magang dirancang selama satu semester penuh agar siswa mendapatkan pengalaman yang komprehensif."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Kepala Program Keahlian Perhotelan, Ibu Siti Nurjanah, S.Par., M.M., mengatakan bahwa MoU ini merupakan langkah maju dalam meningkatkan kualitas lulusan. \"Dengan mitra industri sekelas Hotel Grand Asia, siswa kami tidak hanya mendapat pengalaman kerja, tetapi juga networking yang sangat berharga untuk masa depan mereka.\""
+      }
     ]
   },
   {
@@ -57,10 +93,22 @@
     "author": "Tim Humas SMK YADIKA",
     "image": "https://picsum.photos/seed/workshop-akuntansi/1200/600",
     "content": [
-      "Program keahlian Akuntansi SMK YADIKA SOREANG mengadakan workshop Akuntansi Digital yang menghadirkan praktisi langsung dari Kantor Akuntan Publik (KAP) terkemuka di Bandung. Workshop ini bertujuan untuk membekali siswa dengan keterampilan akuntansi modern yang relevan dengan kebutuhan industri saat ini.",
-      "Materi workshop mencakup pengenalan dan praktik langsung penggunaan software akuntansi modern seperti Accurate, Zahir Accounting, dan aplikasi berbasis cloud untuk pencatatan keuangan digital. Siswa juga mendapatkan sesi khusus mengenai otomatisasi laporan keuangan dan penggunaan AI dalam akuntansi.",
-      "Para peserta sangat antusias mengikuti workshop yang berlangsung selama dua hari penuh. Salah satu peserta, Dimas Saputra, mengungkapkan bahwa workshop ini membuka wawasannya tentang dunia akuntansi digital. \"Selama ini saya pikir akuntansi hanya tentang Excel dan buku besar. Ternyata sekarang sudah banyak software canggih yang mempermudah pekerjaan akuntan,\" katanya.",
-      "Pembina program keahlian Akuntansi menyampaikan bahwa workshop semacam ini akan diadakan secara rutin setiap semester. \"Kami ingin memastikan lulusan kami tidak hanya menguasai teori akuntansi, tetapi juga siap menggunakan teknologi terbaru di dunia kerja. Kerjasama dengan KAP akan terus kami kembangkan.\""
+      {
+        "subtitle": "What?",
+        "text": "Program keahlian Akuntansi SMK YADIKA SOREANG mengadakan workshop Akuntansi Digital yang menghadirkan praktisi langsung dari Kantor Akuntan Publik (KAP) terkemuka di Bandung. Workshop ini bertujuan untuk membekali siswa dengan keterampilan akuntansi modern yang relevan dengan kebutuhan industri saat ini."
+      },
+      {
+        "subtitle": "What?",
+        "text": "Materi workshop mencakup pengenalan dan praktik langsung penggunaan software akuntansi modern seperti Accurate, Zahir Accounting, dan aplikasi berbasis cloud untuk pencatatan keuangan digital. Siswa juga mendapatkan sesi khusus mengenai otomatisasi laporan keuangan dan penggunaan AI dalam akuntansi."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Para peserta sangat antusias mengikuti workshop yang berlangsung selama dua hari penuh. Salah satu peserta, Dimas Saputra, mengungkapkan bahwa workshop ini membuka wawasannya tentang dunia akuntansi digital. \"Selama ini saya pikir akuntansi hanya tentang Excel dan buku besar. Ternyata sekarang sudah banyak software canggih yang mempermudah pekerjaan akuntan,\" katanya."
+      },
+      {
+        "subtitle": "Who?",
+        "text": "Pembina program keahlian Akuntansi menyampaikan bahwa workshop semacam ini akan diadakan secara rutin setiap semester. \"Kami ingin memastikan lulusan kami tidak hanya menguasai teori akuntansi, tetapi juga siap menggunakan teknologi terbaru di dunia kerja. Kerjasama dengan KAP akan terus kami kembangkan.\""
+      }
     ]
   }
 ]

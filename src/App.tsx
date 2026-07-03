@@ -7,6 +7,7 @@ import { JurusanDetail } from './pages/JurusanDetail'
 import { Fasilitas } from './pages/Fasilitas'
 import { Berita } from './pages/Berita'
 import { BeritaDetail } from './pages/BeritaDetail'
+import { Ppdb } from './pages/Ppdb'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/fasilitas" element={<Fasilitas />} />
           <Route path="/berita" element={<Berita />} />
           <Route path="/berita/:slug" element={<BeritaDetail />} />
+          <Route path="/ppdb" element={<Ppdb />} />
         </Route>
       </Routes>
     </BrowserRouter>

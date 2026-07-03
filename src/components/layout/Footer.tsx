@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
 import { BottomBrackets, SectionDivider } from '../sections/Scaffold'
 import logoSrc from '../../assets/image.png'
@@ -40,13 +41,13 @@ export function Footer() {
               </div>
             </div>
 
-            <a
-              href="#daftar"
+            <NavLink
+              to="/ppdb"
               className="group inline-flex shrink-0 items-center gap-3 bg-accent px-8 py-4 font-body text-sm font-semibold text-base transition-all hover:bg-sky-700"
             >
               Daftar Sekarang
               <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </NavLink>
           </div>
 
           <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-copy/5 pt-6 md:flex-row md:items-center">
