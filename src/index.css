@@ -13,9 +13,17 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+[data-theme="light"] {
+  --color-base: #F8F5F0;
+  --color-surf: #EDE8E0;
+  --color-copy: #1C1B19;
+  --color-muted: #8A8580;
+}
+
 body {
   background: var(--color-base);
   margin: 0;
+  transition: background 0.5s ease;
 }
 
 .glass-nav {
