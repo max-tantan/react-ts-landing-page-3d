@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
 import { FiDownload } from 'react-icons/fi'
 import { navLinks } from '../../data/navigation'
+import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 import logoSrc from '../../assets/image.png'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <nav className="fixed top-4 z-50 flex w-full items-center justify-between px-6 lg:px-12">
@@ -37,7 +40,7 @@ export function Navbar() {
                 {isActive && (
                   <span className="absolute bottom-0 left-3 right-3 h-px bg-accent" />
                 )}
-                {link.label}
+                {t('nav.' + link.key)}
               </>
             )}
           </NavLink>
@@ -47,15 +50,20 @@ export function Navbar() {
           className="mr-3 cursor-default flex items-center gap-1.5 border border-accent/40 px-4 py-2 font-body text-sm font-medium text-accent/60 transition-colors"
         >
           <FiDownload className="h-4 w-4" />
-          Brosur
+          {t('action.brosur')}
         </button>
         <NavLink
           to="/ppdb"
           className="mr-0.5 flex items-center gap-1.5 bg-accent px-4 py-2 font-body text-sm font-semibold text-base"
         >
-          Daftar Sekarang
+          {t('action.daftarSekarang')}
           <ArrowUpRight className="h-4 w-4" />
         </NavLink>
+      </div>
+
+      <div className="hidden md:flex items-center">
+        <div className="mr-4 h-5 w-px bg-copy/6" />
+        <LanguageSwitcher />
       </div>
 
       {/* Hamburger button */}
@@ -94,8 +102,8 @@ export function Navbar() {
               className="fixed right-0 top-0 flex h-full w-64 flex-col border-l border-copy/5 bg-surf md:hidden"
             >
               <div className="flex items-center justify-between px-6 py-5">
-                <span className="font-mono text-xs tracking-wider text-muted">Menu</span>
-                <button onClick={() => setOpen(false)} aria-label="Tutup menu">
+                <span className="font-mono text-xs tracking-wider text-muted">{t('action.menu')}</span>
+                <button onClick={() => setOpen(false)} aria-label={t('action.tutupMenu')}>
                   <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-copy">
                     <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
@@ -115,9 +123,13 @@ export function Navbar() {
                       }`
                     }
                   >
-                    {link.label}
+                    {t('nav.' + link.key)}
                   </NavLink>
                 ))}
+
+                <div className="px-3 pt-2">
+                  <LanguageSwitcher />
+                </div>
               </div>
 
               <div className="flex flex-col gap-2 px-4 pb-8">
@@ -126,14 +138,14 @@ export function Navbar() {
                   className="flex items-center justify-center gap-1.5 border border-accent/40 px-4 py-2.5 font-body text-sm font-medium text-accent/60 transition-colors"
                 >
                   <FiDownload className="h-4 w-4" />
-                  Download Brosur
+                  {t('action.downloadBrosur')}
                 </button>
                 <NavLink
                   to="/ppdb"
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-center gap-1.5 bg-accent px-4 py-2.5 font-body text-sm font-semibold text-base"
                 >
-                  Daftar Sekarang
+                  {t('action.daftarSekarang')}
                   <ArrowUpRight className="h-4 w-4" />
                 </NavLink>
               </div>

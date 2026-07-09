@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "beranda": "Beranda",
+    "profil": "Profil",
+    "jurusan": "Jurusan",
+    "fasilitas": "Fasilitas",
+    "berita": "Berita",
+    "ppdb": "PPDB"
+  },
+  "action": {
+    "brosur": "Brosur",
+    "downloadBrosur": "Download Brosur",
+    "daftarSekarang": "Daftar Sekarang",
+    "hubungiKami": "// Hubungi Kami",
+    "menu": "Menu",
+    "tutupMenu": "Tutup menu"
+  },
+  "footer": {
+    "siapMulai": "Siap mulai",
+    "perjalananmu": "perjalananmu?",
+    "alamat": "SMK YADIKA SOREANG — Jl. Raya Soreang No. 123, Kab. Bandung, Jawa Barat 40912",
+    "copyright": "© 2026 SMK YADIKA SOREANG"
+  },
+  "hero": {
+    "subtitle": "SMK YADIKA SOREANG"
+  }
+}

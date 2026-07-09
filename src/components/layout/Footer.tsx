@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
 import { BottomBrackets, SectionDivider } from '../sections/Scaffold'
 import logoSrc from '../../assets/image.png'
 
 export function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="relative bg-base">
       <SectionDivider />
@@ -13,16 +15,15 @@ export function Footer() {
           <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-lg">
               <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-accent/70">
-                // Hubungi Kami
+                {t('action.hubungiKami')}
               </p>
               <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[0.9] tracking-[-2px] text-copy">
-              Siap mulai
+              {t('footer.siapMulai')}
               <br />
-              perjalananmu?
+              {t('footer.perjalananmu')}
               </h2>
               <p className="mt-4 font-body text-sm leading-relaxed text-muted">
-                SMK YADIKA SOREANG — Jl. Raya Soreang No. 123, Kab. Bandung,
-                Jawa Barat 40912
+                {t('footer.alamat')}
               </p>
               <div className="mt-6 flex items-center gap-6">
                 <a
@@ -45,7 +46,7 @@ export function Footer() {
               to="/ppdb"
               className="group inline-flex shrink-0 items-center gap-3 bg-accent px-8 py-4 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
             >
-              Daftar Sekarang
+              {t('action.daftarSekarang')}
               <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </NavLink>
           </div>
@@ -60,7 +61,7 @@ export function Footer() {
                 <img src={logoSrc} alt="SMK YADIKA SOREANG" className="h-6 w-auto" />
               </a>
               <span className="font-body text-xs text-muted">
-                © 2026 SMK YADIKA SOREANG
+                {t('footer.copyright')}
               </span>
             </div>
 
