@@ -9,7 +9,7 @@ import {
   SpecimenLabel,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
-import beritaData from '../data/berita.json'
+import { getArticleBySlug, getRelatedArticles } from '../data'
 import type { Artikel } from '../types'
 
 function estimateReadingTime(content: Artikel['content']): number {
@@ -17,17 +17,9 @@ function estimateReadingTime(content: Artikel['content']): number {
   return Math.max(1, Math.round(totalWords / 200))
 }
 
-function getRelatedArticles(slug: string, limit = 3) {
-  return (beritaData as Artikel[])
-    .filter((item) => item.slug !== slug)
-    .slice(0, limit)
-}
-
 export function BeritaDetail() {
   const { slug } = useParams<{ slug: string }>()
-  const article = (beritaData as Artikel[]).find(
-    (item) => item.slug === slug
-  )
+  const article = slug ? getArticleBySlug(slug) : undefined
 
   if (!article) {
     return (
@@ -58,7 +50,7 @@ export function BeritaDetail() {
   }
 
   const readingTime = estimateReadingTime(article.content)
-  const relatedArticles = getRelatedArticles(article.slug)
+  const relatedArticles = getRelatedArticles(article.slug, 3)
 
   return (
     <>

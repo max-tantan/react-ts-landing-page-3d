@@ -3,16 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight } from '../ui/icons/ArrowUpRight'
 import { FiDownload } from 'react-icons/fi'
+import { navLinks } from '../../data/navigation'
 import logoSrc from '../../assets/image.png'
-
-const navLinks = [
-  { label: 'Beranda', to: '/' },
-  { label: 'Profil', to: '/profil' },
-  { label: 'Jurusan', to: '/jurusan' },
-  { label: 'Fasilitas', to: '/fasilitas' },
-  { label: 'Berita', to: '/berita' },
-  { label: 'PPDB', to: '/ppdb' },
-]
 
 export function Navbar() {
   const [open, setOpen] = useState(false)

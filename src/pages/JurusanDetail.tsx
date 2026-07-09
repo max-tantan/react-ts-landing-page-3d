@@ -9,20 +9,11 @@ import {
   SpecimenLabel,
 } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
-import pplgData from '../data/pplg.json'
-import htlData from '../data/htl.json'
-import akData from '../data/ak.json'
-import type { JurusanDetail as JurusanDetailType } from '../types'
-
-const jurusanMap: Record<string, JurusanDetailType> = {
-  pplg: pplgData as JurusanDetailType,
-  htl: htlData as JurusanDetailType,
-  ak: akData as JurusanDetailType,
-}
+import { getJurusanDetail } from '../data'
 
 export function JurusanDetail() {
   const { code } = useParams<{ code: string }>()
-  const data = code ? jurusanMap[code.toLowerCase()] : undefined
+  const data = code ? getJurusanDetail(code) : undefined
 
   if (!data) {
     return (

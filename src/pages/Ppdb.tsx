@@ -1,9 +1,24 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CornerBrackets, SectionDivider, BottomBrackets, ArrowUpRight, SpecimenLabel } from '../components'
+import {
+  CornerBrackets,
+  SectionDivider,
+  BottomBrackets,
+  ArrowUpRight,
+  SpecimenLabel,
+} from '../components'
 import { GlareHover } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
+import {
+  viewReveal,
+  staggerFormField,
+  modalOverlay,
+  modalCard,
+} from '../hooks/animationPresets'
+import { validatePPDBForm, createLocalStorageStore } from '../lib/ppdb'
 import type { Pendaftar } from '../types'
+
+const store = createLocalStorageStore()
 
 const programs = [
   { code: 'PPLG', name: 'Pengembangan Perangkat Lunak dan Gim' },
@@ -50,36 +65,44 @@ const emptyForm = {
   jurusan2: '',
 }
 
+type FormKey = keyof typeof emptyForm
+
+function FieldShell({
+  error,
+  children,
+}: {
+  error?: string
+  children: React.ReactNode
+}) {
+  return (
+    <div
+      className={`input-shell ${
+        error ? 'input-shell-error' : ''
+      } group-focus-within:input-shell-focus`}
+    >
+      <div className="input-core relative">{children}</div>
+    </div>
+  )
+}
+
 export function Ppdb() {
   const [form, setForm] = useState(emptyForm)
-  const [errors, setErrors] = useState<Partial<Record<keyof typeof emptyForm, string>>>({})
+  const [errors, setErrors] = useState<Partial<Record<FormKey, string>>>({})
   const [submitted, setSubmitted] = useState<Pendaftar | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+  function handleChange(
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
-    if (errors[name as keyof typeof errors]) {
+    if (errors[name as FormKey]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
   }
 
   function validate() {
-    const errs: Partial<Record<keyof typeof emptyForm, string>> = {}
-    if (!form.nama.trim()) errs.nama = 'Nama lengkap wajib diisi'
-    if (!form.tempatLahir.trim()) errs.tempatLahir = 'Tempat lahir wajib diisi'
-    if (!form.tanggalLahir) errs.tanggalLahir = 'Tanggal lahir wajib diisi'
-    if (!form.jenisKelamin) errs.jenisKelamin = 'Pilih jenis kelamin'
-    if (!form.alamat.trim()) errs.alamat = 'Alamat wajib diisi'
-    if (!form.noHp.trim()) errs.noHp = 'Nomor HP/WA wajib diisi'
-    if (!form.email.trim()) errs.email = 'Email wajib diisi'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Format email tidak valid'
-    if (!form.asalSekolah.trim()) errs.asalSekolah = 'Asal sekolah wajib diisi'
-    if (!form.nisn.trim()) errs.nisn = 'NISN wajib diisi'
-    else if (!/^\d{10}$/.test(form.nisn)) errs.nisn = 'NISN harus 10 digit angka'
-    if (!form.tahunLulus) errs.tahunLulus = 'Pilih tahun lulus'
-    if (!form.jurusan1) errs.jurusan1 = 'Pilih jurusan utama'
-    return errs
+    return validatePPDBForm(form)
   }
 
   function handleSubmit(e: FormEvent) {
@@ -92,8 +115,9 @@ export function Ppdb() {
 
     setSubmitting(true)
 
+    const id = `PPDB-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`
     const pendaftar: Pendaftar = {
-      id: `PPDB-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
+      id,
       nama: form.nama.trim(),
       tempatLahir: form.tempatLahir.trim(),
       tanggalLahir: form.tanggalLahir,
@@ -109,9 +133,7 @@ export function Ppdb() {
       createdAt: new Date().toISOString(),
     }
 
-    const existing = JSON.parse(localStorage.getItem('ppdb_pendaftar') || '[]')
-    existing.push(pendaftar)
-    localStorage.setItem('ppdb_pendaftar', JSON.stringify(existing))
+    store.save(pendaftar)
 
     setTimeout(() => {
       setSubmitted(pendaftar)
@@ -122,6 +144,15 @@ export function Ppdb() {
 
   function scrollToForm() {
     document.getElementById('form-pendaftaran')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const fieldIndex = (key: FormKey) => {
+    const order: FormKey[] = [
+      'nama', 'tempatLahir', 'tanggalLahir', 'jenisKelamin',
+      'alamat', 'noHp', 'email', 'asalSekolah',
+      'nisn', 'tahunLulus', 'jurusan1', 'jurusan2',
+    ]
+    return order.indexOf(key)
   }
 
   return (
@@ -154,10 +185,12 @@ export function Ppdb() {
             <motion.div {...fadeUp(0.4)} className="mt-8 flex flex-wrap gap-4">
               <button
                 onClick={scrollToForm}
-                className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
+                className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-accent-hover active:scale-[0.98]"
               >
                 Daftar Sekarang
-                <ArrowUpRight className="h-4 w-4" />
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </span>
               </button>
             </motion.div>
           </header>
@@ -171,9 +204,7 @@ export function Ppdb() {
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
             <motion.p {...fadeUp(0.1)}>
-              <SpecimenLabel variant="data">
-                Persyaratan
-              </SpecimenLabel>
+              <SpecimenLabel variant="data">Persyaratan</SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -209,9 +240,7 @@ export function Ppdb() {
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
             <motion.p {...fadeUp(0.1)}>
-              <SpecimenLabel variant="narrative">
-                Alur Pendaftaran
-              </SpecimenLabel>
+              <SpecimenLabel variant="narrative">Alur Pendaftaran</SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -265,9 +294,7 @@ export function Ppdb() {
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
             <motion.p {...fadeUp(0.1)}>
-              <SpecimenLabel variant="data">
-                Jadwal Seleksi
-              </SpecimenLabel>
+              <SpecimenLabel variant="data">Jadwal Seleksi</SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -309,9 +336,7 @@ export function Ppdb() {
         <div className="px-6 pt-20 pb-16 md:px-12 lg:px-16">
           <header>
             <motion.p {...fadeUp(0.1)}>
-              <SpecimenLabel variant="data">
-                Program Keahlian
-              </SpecimenLabel>
+              <SpecimenLabel variant="data">Program Keahlian</SpecimenLabel>
             </motion.p>
             <motion.h2
               {...fadeUp(0.2)}
@@ -354,10 +379,12 @@ export function Ppdb() {
           <motion.div {...fadeUp(0.5)} className="mt-10">
             <button
               onClick={scrollToForm}
-              className="inline-flex items-center gap-2 bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
+              className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3 font-body text-sm font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-accent-hover active:scale-[0.98]"
             >
               Daftar Sekarang
-              <ArrowUpRight className="h-4 w-4" />
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </span>
             </button>
           </motion.div>
         </div>
@@ -365,334 +392,516 @@ export function Ppdb() {
         <SectionDivider />
       </section>
 
-      {/* ─── Form Pendaftaran ─── */}
-      <section id="form-pendaftaran" className="bg-base">
-        <div className="relative px-6 pt-20 pb-20 md:px-12 lg:px-16">
-          <header>
-            <motion.p {...fadeUp(0.1)}>
-              <SpecimenLabel variant="action">
-                Formulir Pendaftaran
-              </SpecimenLabel>
-            </motion.p>
-            <motion.h2
-              {...fadeUp(0.2)}
-              className="mt-2 max-w-3xl font-display text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[0.9] tracking-[-2px] text-copy"
+      {/* ─── Form Pendaftaran — Editorial Split ─── */}
+      <section id="form-pendaftaran" className="relative bg-base overflow-hidden">
+        {/* Mesh gradient background glow */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute top-1/4 -left-32 h-[600px] w-[600px] rounded-full opacity-[0.04]"
+            style={{
+              background:
+                'radial-gradient(circle, var(--color-accent) 0%, transparent 70%)',
+            }}
+          />
+          <div
+            className="absolute -right-24 bottom-1/4 h-[400px] w-[400px] rounded-full opacity-[0.03]"
+            style={{
+              background:
+                'radial-gradient(circle, #818cf8 0%, transparent 70%)',
+            }}
+          />
+        </div>
+
+        <div className="relative px-6 pt-20 pb-24 md:px-12 lg:px-16">
+          <CornerBrackets className="relative mb-16 h-6" />
+
+          <div className="flex flex-col gap-16 lg:flex-row lg:gap-20">
+            {/* ── Left: Editorial Copy ── */}
+            <div className="lg:w-5/12 lg:sticky lg:top-28 lg:self-start">
+              <motion.div {...viewReveal}>
+                <SpecimenLabel variant="action">Formulir Pendaftaran</SpecimenLabel>
+              </motion.div>
+
+              <motion.h2
+                {...viewReveal}
+                transition={{ ...viewReveal.transition, delay: 0.1 }}
+                className="mt-4 max-w-xl font-display text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[0.88] tracking-[-3px] text-copy"
+              >
+                Isi data dirimu
+                <br />
+                dengan benar
+              </motion.h2>
+
+              <motion.p
+                {...viewReveal}
+                transition={{ ...viewReveal.transition, delay: 0.2 }}
+                className="mt-6 max-w-md font-body text-sm leading-relaxed text-muted"
+              >
+                Pastikan semua data yang kamu masukkan sudah benar. Data
+                yang terdaftar tidak dapat diubah setelah pengiriman.
+              </motion.p>
+
+              {/* Program pills */}
+              <motion.div
+                {...viewReveal}
+                transition={{ ...viewReveal.transition, delay: 0.3 }}
+                className="mt-8 flex flex-wrap gap-2"
+              >
+                {programs.map((p) => (
+                  <span
+                    key={p.code}
+                    className="tool-tag"
+                  >
+                    {p.code}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* Decorative measurement marks */}
+              <motion.div
+                {...viewReveal}
+                transition={{ ...viewReveal.transition, delay: 0.4 }}
+                className="mt-10 hidden lg:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-12 bg-accent/20" />
+                  <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-accent/30">
+                    {requirements.length} berkas diperlukan
+                  </span>
+                </div>
+                <div className="mt-4 flex items-center gap-3">
+                  <div className="h-px w-12 bg-accent/20" />
+                  <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-accent/30">
+                    {jadwal.length} gelombang aktif
+                  </span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* ── Right: Glass Form Card ── */}
+            <motion.div
+              {...viewReveal}
+              transition={{ ...viewReveal.transition, delay: 0.15 }}
+              className="lg:w-7/12"
             >
-              Isi data dirimu
-              <br />
-              dengan benar
-            </motion.h2>
-          </header>
+              <div className="glass-card rounded-[2rem] p-3 md:p-4">
+                <div className="rounded-[calc(2rem-0.375rem)] bg-base/40 p-6 md:p-10">
+                  <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                    {/* Nama */}
+                    <motion.div {...staggerFormField(fieldIndex('nama'))}>
+                      <label
+                        htmlFor="nama"
+                        className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                      >
+                        Nama Lengkap <span className="text-error">*</span>
+                      </label>
+                      <FieldShell error={errors.nama}>
+                        <input
+                          id="nama"
+                          name="nama"
+                          type="text"
+                          value={form.nama}
+                          onChange={handleChange}
 
-          <motion.form
-            {...fadeUp(0.3)}
-            onSubmit={handleSubmit}
-            className="mt-10 max-w-3xl space-y-6"
-            noValidate
-          >
-            {/* Nama */}
-            <div>
-              <label htmlFor="nama" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Nama Lengkap <span className="text-error">*</span>
-              </label>
-              <input
-                id="nama"
-                name="nama"
-                type="text"
-                value={form.nama}
-                onChange={handleChange}
-                className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                  errors.nama ? 'border-error/60' : 'border-copy/10'
-                }`}
-                placeholder="Nama lengkap sesuai ijazah"
-              />
-              {errors.nama && <p className="mt-1 font-mono text-[11px] text-error">{errors.nama}</p>}
-            </div>
+                          className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                          placeholder="Nama lengkap sesuai ijazah"
+                        />
+                      </FieldShell>
+                      {errors.nama && (
+                        <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.nama}</p>
+                      )}
+                    </motion.div>
 
-            {/* Tempat & Tgl Lahir */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="tempatLahir" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Tempat Lahir <span className="text-error">*</span>
-                </label>
-                <input
-                  id="tempatLahir"
-                  name="tempatLahir"
-                  type="text"
-                  value={form.tempatLahir}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.tempatLahir ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                  placeholder="Contoh: Bandung"
-                />
-                {errors.tempatLahir && <p className="mt-1 font-mono text-[11px] text-error">{errors.tempatLahir}</p>}
+                    {/* Tempat & Tgl Lahir */}
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <motion.div {...staggerFormField(fieldIndex('tempatLahir'))}>
+                        <label
+                          htmlFor="tempatLahir"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Tempat Lahir <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.tempatLahir}>
+                          <input
+                            id="tempatLahir"
+                            name="tempatLahir"
+                            type="text"
+                            value={form.tempatLahir}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                            placeholder="Contoh: Bandung"
+                          />
+                        </FieldShell>
+                        {errors.tempatLahir && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.tempatLahir}</p>
+                        )}
+                      </motion.div>
+                      <motion.div {...staggerFormField(fieldIndex('tanggalLahir'))}>
+                        <label
+                          htmlFor="tanggalLahir"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Tanggal Lahir <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.tanggalLahir}>
+                          <input
+                            id="tanggalLahir"
+                            name="tanggalLahir"
+                            type="date"
+                            value={form.tanggalLahir}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none [color-scheme:dark]"
+                          />
+                        </FieldShell>
+                        {errors.tanggalLahir && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.tanggalLahir}</p>
+                        )}
+                      </motion.div>
+                    </div>
+
+                    {/* Jenis Kelamin — Radio Pills */}
+                    <motion.div {...staggerFormField(fieldIndex('jenisKelamin'))}>
+                      <span className="mb-2 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60">
+                        Jenis Kelamin <span className="text-error">*</span>
+                      </span>
+                      <div className="flex gap-3">
+                        {(['L', 'P'] as const).map((val) => (
+                          <label key={val} className="flex-1">
+                            <input
+                              type="radio"
+                              name="jenisKelamin"
+                              value={val}
+                              checked={form.jenisKelamin === val}
+                              onChange={handleChange}
+                              className="peer sr-only"
+                            />
+                            <div
+                              className={`radio-pill peer-checked:radio-pill-active peer-active:scale-[0.97] w-full ${
+                                errors.jenisKelamin && !form.jenisKelamin
+                                  ? 'border-error/30'
+                                  : ''
+                              }`}
+                            >
+                              <span className={`block h-2 w-2 rounded-full transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                                form.jenisKelamin === val
+                                  ? 'bg-base scale-110'
+                                  : 'bg-muted/30'
+                              }`} />
+                              {val === 'L' ? 'Laki-laki' : 'Perempuan'}
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                      {errors.jenisKelamin && (
+                        <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.jenisKelamin}</p>
+                      )}
+                    </motion.div>
+
+                    {/* Alamat */}
+                    <motion.div {...staggerFormField(fieldIndex('alamat'))}>
+                      <label
+                        htmlFor="alamat"
+                        className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                      >
+                        Alamat <span className="text-error">*</span>
+                      </label>
+                      <FieldShell error={errors.alamat}>
+                        <textarea
+                          id="alamat"
+                          name="alamat"
+                          rows={3}
+                          value={form.alamat}
+                          onChange={handleChange}
+                          className="w-full resize-none bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                          placeholder="Alamat lengkap sesuai KTP"
+                        />
+                      </FieldShell>
+                      {errors.alamat && (
+                        <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.alamat}</p>
+                      )}
+                    </motion.div>
+
+                    {/* No HP & Email */}
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <motion.div {...staggerFormField(fieldIndex('noHp'))}>
+                        <label
+                          htmlFor="noHp"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          No. HP/WA <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.noHp}>
+                          <input
+                            id="noHp"
+                            name="noHp"
+                            type="tel"
+                            value={form.noHp}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                            placeholder="08xxxxxxxxxx"
+                          />
+                        </FieldShell>
+                        {errors.noHp && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.noHp}</p>
+                        )}
+                      </motion.div>
+                      <motion.div {...staggerFormField(fieldIndex('email'))}>
+                        <label
+                          htmlFor="email"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Email <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.email}>
+                          <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                            placeholder="contoh@email.com"
+                          />
+                        </FieldShell>
+                        {errors.email && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.email}</p>
+                        )}
+                      </motion.div>
+                    </div>
+
+                    {/* Asal Sekolah & NISN */}
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <motion.div {...staggerFormField(fieldIndex('asalSekolah'))}>
+                        <label
+                          htmlFor="asalSekolah"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Asal Sekolah <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.asalSekolah}>
+                          <input
+                            id="asalSekolah"
+                            name="asalSekolah"
+                            type="text"
+                            value={form.asalSekolah}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                            placeholder="Nama SMP/MTs asal"
+                          />
+                        </FieldShell>
+                        {errors.asalSekolah && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.asalSekolah}</p>
+                        )}
+                      </motion.div>
+                      <motion.div {...staggerFormField(fieldIndex('nisn'))}>
+                        <label
+                          htmlFor="nisn"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          NISN <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.nisn}>
+                          <input
+                            id="nisn"
+                            name="nisn"
+                            type="text"
+                            maxLength={10}
+                            value={form.nisn}
+                            onChange={handleChange}
+                            className="w-full bg-transparent font-body text-sm text-copy outline-none placeholder:text-muted/30"
+                            placeholder="10 digit NISN"
+                          />
+                        </FieldShell>
+                        {errors.nisn && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.nisn}</p>
+                        )}
+                      </motion.div>
+                    </div>
+
+                    {/* Tahun Lulus */}
+                    <motion.div {...staggerFormField(fieldIndex('tahunLulus'))}>
+                      <label
+                        htmlFor="tahunLulus"
+                        className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                      >
+                        Tahun Lulus <span className="text-error">*</span>
+                      </label>
+                      <FieldShell error={errors.tahunLulus}>
+                        <select
+                          id="tahunLulus"
+                          name="tahunLulus"
+                          value={form.tahunLulus}
+                          onChange={handleChange}
+                          className="custom-select w-full bg-transparent font-body text-sm text-copy outline-none"
+                        >
+                          <option value="" className="bg-surf text-muted">— Pilih Tahun Lulus —</option>
+                          {[2024, 2025, 2026].map((th) => (
+                            <option key={th} value={th} className="bg-surf text-copy">{th}</option>
+                          ))}
+                        </select>
+                      </FieldShell>
+                      {errors.tahunLulus && (
+                        <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.tahunLulus}</p>
+                      )}
+                    </motion.div>
+
+                    {/* Pilihan Jurusan */}
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <motion.div {...staggerFormField(fieldIndex('jurusan1'))}>
+                        <label
+                          htmlFor="jurusan1"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Jurusan 1 (Utama) <span className="text-error">*</span>
+                        </label>
+                        <FieldShell error={errors.jurusan1}>
+                          <select
+                            id="jurusan1"
+                            name="jurusan1"
+                            value={form.jurusan1}
+                            onChange={handleChange}
+                            className="custom-select w-full bg-transparent font-body text-sm text-copy outline-none"
+                          >
+                            <option value="" className="bg-surf text-muted">— Pilih Jurusan —</option>
+                            {programs.map((p) => (
+                              <option key={p.code} value={p.code} className="bg-surf text-copy">
+                                {p.code} — {p.name}
+                              </option>
+                            ))}
+                          </select>
+                        </FieldShell>
+                        {errors.jurusan1 && (
+                          <p className="mt-1.5 pl-1 font-mono text-[10px] text-error">{errors.jurusan1}</p>
+                        )}
+                      </motion.div>
+                      <motion.div {...staggerFormField(fieldIndex('jurusan2'))}>
+                        <label
+                          htmlFor="jurusan2"
+                          className="mb-1.5 block font-mono text-[10px] tracking-[0.15em] uppercase text-accent/60"
+                        >
+                          Jurusan 2 (Cadangan)
+                        </label>
+                        <FieldShell>
+                          <select
+                            id="jurusan2"
+                            name="jurusan2"
+                            value={form.jurusan2}
+                            onChange={handleChange}
+                            className="custom-select w-full bg-transparent font-body text-sm text-copy outline-none"
+                          >
+                            <option value="" className="bg-surf text-muted">— Tidak Ada —</option>
+                            {programs.filter((p) => p.code !== form.jurusan1).map((p) => (
+                              <option key={p.code} value={p.code} className="bg-surf text-copy">
+                                {p.code} — {p.name}
+                              </option>
+                            ))}
+                          </select>
+                        </FieldShell>
+                      </motion.div>
+                    </div>
+
+                    {/* Submit */}
+                    <motion.div
+                      {...staggerFormField(fieldIndex('jurusan2') + 1)}
+                      className="border-t border-copy/5 pt-6"
+                    >
+                      <p className="mb-5 font-mono text-[10px] tracking-[0.15em] uppercase text-muted/50">
+                        <span className="text-error">*</span> = Wajib diisi
+                      </p>
+                      <button
+                        type="submit"
+                        disabled={submitting}
+                        className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-3.5 font-body text-sm font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-accent-hover active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {submitting ? (
+                          <>
+                            <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                            </svg>
+                            Mengirim...
+                          </>
+                        ) : (
+                          <>
+                            Kirim Pendaftaran
+                            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                              <ArrowUpRight className="h-3.5 w-3.5" />
+                            </span>
+                          </>
+                        )}
+                      </button>
+                    </motion.div>
+                  </form>
+                </div>
               </div>
-              <div>
-                <label htmlFor="tanggalLahir" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Tanggal Lahir <span className="text-error">*</span>
-                </label>
-                <input
-                  id="tanggalLahir"
-                  name="tanggalLahir"
-                  type="date"
-                  value={form.tanggalLahir}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                    errors.tanggalLahir ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                />
-                {errors.tanggalLahir && <p className="mt-1 font-mono text-[11px] text-error">{errors.tanggalLahir}</p>}
-              </div>
-            </div>
 
-            {/* JK */}
-            <div>
-              <span className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Jenis Kelamin <span className="text-error">*</span>
-              </span>
-              <div className="mt-2 flex gap-6">
-                {(['L', 'P'] as const).map((val) => (
-                  <label key={val} className="flex items-center gap-2 font-body text-sm text-muted">
-                    <input
-                      type="radio"
-                      name="jenisKelamin"
-                      value={val}
-                      checked={form.jenisKelamin === val}
-                      onChange={handleChange}
-                      className="h-4 w-4 accent-accent"
-                    />
-                    {val === 'L' ? 'Laki-laki' : 'Perempuan'}
-                  </label>
-                ))}
-              </div>
-              {errors.jenisKelamin && <p className="mt-1 font-mono text-[11px] text-error">{errors.jenisKelamin}</p>}
-            </div>
-
-            {/* Alamat */}
-            <div>
-              <label htmlFor="alamat" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Alamat <span className="text-error">*</span>
-              </label>
-              <textarea
-                id="alamat"
-                name="alamat"
-                rows={3}
-                value={form.alamat}
-                onChange={handleChange}
-                className={`mt-1.5 w-full resize-none border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                  errors.alamat ? 'border-error/60' : 'border-copy/10'
-                }`}
-                placeholder="Alamat lengkap sesuai KTP"
-              />
-              {errors.alamat && <p className="mt-1 font-mono text-[11px] text-error">{errors.alamat}</p>}
-            </div>
-
-            {/* No HP & Email */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="noHp" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  No. HP/WA <span className="text-error">*</span>
-                </label>
-                <input
-                  id="noHp"
-                  name="noHp"
-                  type="tel"
-                  value={form.noHp}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.noHp ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                  placeholder="08xxxxxxxxxx"
-                />
-                {errors.noHp && <p className="mt-1 font-mono text-[11px] text-error">{errors.noHp}</p>}
-              </div>
-              <div>
-                <label htmlFor="email" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Email <span className="text-error">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.email ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                  placeholder="contoh@email.com"
-                />
-                {errors.email && <p className="mt-1 font-mono text-[11px] text-error">{errors.email}</p>}
-              </div>
-            </div>
-
-            {/* Asal Sekolah & NISN */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="asalSekolah" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Asal Sekolah <span className="text-error">*</span>
-                </label>
-                <input
-                  id="asalSekolah"
-                  name="asalSekolah"
-                  type="text"
-                  value={form.asalSekolah}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.asalSekolah ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                  placeholder="Nama SMP/MTs asal"
-                />
-                {errors.asalSekolah && <p className="mt-1 font-mono text-[11px] text-error">{errors.asalSekolah}</p>}
-              </div>
-              <div>
-                <label htmlFor="nisn" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  NISN <span className="text-error">*</span>
-                </label>
-                <input
-                  id="nisn"
-                  name="nisn"
-                  type="text"
-                  maxLength={10}
-                  value={form.nisn}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors placeholder:text-muted/40 focus:border-accent/60 ${
-                    errors.nisn ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                  placeholder="10 digit NISN"
-                />
-                {errors.nisn && <p className="mt-1 font-mono text-[11px] text-error">{errors.nisn}</p>}
-              </div>
-            </div>
-
-            {/* Tahun Lulus */}
-            <div>
-              <label htmlFor="tahunLulus" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                Tahun Lulus <span className="text-error">*</span>
-              </label>
-              <select
-                id="tahunLulus"
-                name="tahunLulus"
-                value={form.tahunLulus}
-                onChange={handleChange}
-                className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                  errors.tahunLulus ? 'border-error/60' : 'border-copy/10'
-                }`}
-              >
-                <option value="">— Pilih Tahun Lulus —</option>
-                {[2024, 2025, 2026].map((th) => (
-                  <option key={th} value={th}>{th}</option>
-                ))}
-              </select>
-              {errors.tahunLulus && <p className="mt-1 font-mono text-[11px] text-error">{errors.tahunLulus}</p>}
-            </div>
-
-            {/* Pilihan Jurusan */}
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="jurusan1" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Jurusan 1 (Pilihan Utama) <span className="text-error">*</span>
-                </label>
-                <select
-                  id="jurusan1"
-                  name="jurusan1"
-                  value={form.jurusan1}
-                  onChange={handleChange}
-                  className={`mt-1.5 w-full border bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60 ${
-                    errors.jurusan1 ? 'border-error/60' : 'border-copy/10'
-                  }`}
-                >
-                  <option value="">— Pilih Jurusan —</option>
-                  {programs.map((p) => (
-                    <option key={p.code} value={p.code}>{p.code} — {p.name}</option>
-                  ))}
-                </select>
-                {errors.jurusan1 && <p className="mt-1 font-mono text-[11px] text-error">{errors.jurusan1}</p>}
-              </div>
-              <div>
-                <label htmlFor="jurusan2" className="block font-mono text-[11px] tracking-wider text-accent/70">
-                  Jurusan 2 (Pilihan Cadangan)
-                </label>
-                <select
-                  id="jurusan2"
-                  name="jurusan2"
-                  value={form.jurusan2}
-                  onChange={handleChange}
-                  className="mt-1.5 w-full border border-copy/10 bg-surf px-4 py-2.5 font-body text-sm text-copy outline-none transition-colors focus:border-accent/60"
-                >
-                  <option value="">— Tidak Ada —</option>
-                  {programs.filter((p) => p.code !== form.jurusan1).map((p) => (
-                    <option key={p.code} value={p.code}>{p.code} — {p.name}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <div className="border-t border-copy/5 pt-6">
-              <p className="mb-4 font-mono text-[11px] tracking-wider text-muted/60">
-                <span className="text-error">*</span> = Wajib diisi
-              </p>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex items-center gap-2 bg-accent px-8 py-3 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover disabled:opacity-50"
-              >
-                {submitting ? 'Mengirim...' : 'Kirim Pendaftaran'}
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
-            </div>
-          </motion.form>
-
-          <BottomBrackets className="absolute bottom-0 left-0 right-0" />
+              <BottomBrackets className="relative mt-4" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ─── Success Modal ─── */}
+      {/* ─── Success Modal — Upgraded Glass ─── */}
       <AnimatePresence>
         {submitted && (
           <motion.div
             key="modal-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-base/70 px-4 backdrop-blur-sm"
+            {...modalOverlay}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-base/80 px-4 backdrop-blur-2xl"
           >
             <motion.div
               key="modal-content"
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 250 }}
-              className="w-full max-w-lg border border-copy/10 bg-surf p-8"
+              {...modalCard}
+              className="w-full max-w-lg"
             >
-              <div className="flex flex-col items-center text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
-                  <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 text-accent">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="mt-4 font-display text-xl font-bold text-copy">
-                  Pendaftaran Berhasil!
-                </h3>
-                <p className="mt-2 font-body text-sm text-muted">
-                  Data kamu sudah kami terima. Simpan nomor pendaftaran berikut:
-                </p>
-                <div className="mt-4 w-full border border-accent/20 bg-accent/5 px-4 py-3">
-                  <p className="font-mono text-lg font-bold tracking-wider text-accent">
-                    {submitted.id}
+              <div className="glass-card rounded-[2rem] p-3">
+                <div className="rounded-[calc(2rem-0.375rem)] bg-base/60 p-8 text-center">
+                  {/* Success icon */}
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 ring-1 ring-accent/20">
+                    <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 text-accent">
+                      <path
+                        d="M5 13l4 4L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+
+                  <h3 className="mt-5 font-display text-2xl font-bold tracking-[-0.5px] text-copy">
+                    Pendaftaran Berhasil!
+                  </h3>
+                  <p className="mt-3 max-w-sm mx-auto font-body text-sm leading-relaxed text-muted">
+                    Data kamu sudah kami terima. Simpan nomor pendaftaran
+                    berikut untuk pengecekan status.
                   </p>
+
+                  {/* PPDB ID — Specimen Display */}
+                  <div className="mt-6 input-shell">
+                    <div className="input-core flex items-center justify-center py-4">
+                      <p className="font-mono text-lg font-bold tracking-[0.15em] text-accent">
+                        {submitted.id}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="mt-5 font-body text-xs leading-relaxed text-muted/50">
+                    Nomor ini digunakan untuk cek status pendaftaran.
+                    <br />
+                    Kami akan menghubungimu melalui email/WA untuk jadwal tes seleksi.
+                  </p>
+
+                  <button
+                    onClick={() => setSubmitted(null)}
+                    className="mt-7 group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-3 font-body text-sm font-semibold text-base transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-accent-hover active:scale-[0.98]"
+                  >
+                    Tutup
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                      <ArrowUpRight className="h-3 w-3" />
+                    </span>
+                  </button>
                 </div>
-                <p className="mt-4 font-body text-xs leading-relaxed text-muted/60">
-                  Nomor ini digunakan untuk cek status pendaftaran.
-                  Kami akan menghubungimu melalui email/WA untuk jadwal tes seleksi.
-                </p>
-                <button
-                  onClick={() => setSubmitted(null)}
-                  className="mt-6 inline-flex items-center gap-2 bg-accent px-6 py-2.5 font-body text-sm font-semibold text-base transition-all hover:bg-accent-hover"
-                >
-                  Tutup
-                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BlurText, CornerBrackets, SectionDivider, GlareHover, PrestasiCard, Pagination, SpecimenLabel } from '../components'
 import { fadeUp } from '../hooks/useFadeUp'
-import prestasiData from '../data/prestasi.json'
-import beritaData from '../data/berita.json'
+import { getAllArticles, getPrestasiAll, getPrestasiByCategory } from '../data'
 import type { Artikel } from '../types'
 
 type Student = {
@@ -155,10 +154,8 @@ export function Berita() {
   const [filter, setFilter] = useState<FilterValue>('semua')
 
   const filteredData = filter === 'semua'
-    ? prestasiData
-    : prestasiData.filter((item) =>
-        filter === 'siswa' ? item.peran.startsWith('Siswa') : item.peran === 'Guru'
-      )
+    ? getPrestasiAll()
+    : getPrestasiByCategory(filter)
 
   const PER_PAGE = 10
   const totalFilteredPages = Math.ceil(filteredData.length / PER_PAGE)
@@ -259,7 +256,7 @@ export function Berita() {
       </div>
 
       <div className="divide-y divide-copy/5 mt-8">
-        {(beritaData as Artikel[]).map((item, i) => (
+        {getAllArticles().map((item, i) => (
           <NewsSection key={item.id} item={item} index={i} />
         ))}
       </div>
