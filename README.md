@@ -13,6 +13,7 @@ Website profil sekolah untuk SMK YADIKA SOREANG — sebuah sekolah kejuruan di S
 | **Framer Motion 12** | Animasi scroll-reveal |
 | **React Router 7** | Routing |
 | **OGL** | WebGL gallery (CircularGallery) |
+| **react-icons** | Icon library |
 
 ## Development
 
@@ -27,23 +28,60 @@ npm run lint     # ESLint
 
 ```
 src/
-├── assets/          # static assets (gambar, dll.)
-├── components/      # shared components
-│   ├── icons/       # icon SVG components
-│   └── index.ts     # barrel export
-├── hooks/           # custom hooks (useFadeUp, dll.)
-├── pages/           # halaman routing
+├── assets/                # static assets (gambar, logo, dll.)
+├── components/
+│   ├── icons/             # icon SVG components
+│   │   ├── ArrowUpRight.tsx
+│   │   └── Play.tsx
+│   ├── layout/            # layout components
+│   │   ├── Footer.tsx
+│   │   ├── Layout.tsx
+│   │   └── Navbar.tsx
+│   ├── sections/          # section components
+│   │   ├── Hero.tsx
+│   │   ├── LogoLoop.tsx
+│   │   └── Scaffold.tsx
+│   ├── ui/                # reusable UI components
+│   │   ├── BlurText.tsx
+│   │   ├── CircularGallery.tsx
+│   │   ├── FadingVideo.tsx
+│   │   ├── GlareHover.tsx
+│   │   ├── Pagination.tsx
+│   │   ├── PrestasiCard.tsx
+│   │   ├── SoftAurora.tsx
+│   │   └── SpecimenLabel.tsx
+│   ├── ScrollToTop.tsx
+│   └── index.ts           # barrel export
+├── data/                  # static JSON data sources
+│   ├── navigation.ts
+│   ├── berita.json
+│   ├── prestasi.json
+│   ├── ak.json
+│   ├── htl.json
+│   └── pplg.json
+├── hooks/                 # custom hooks
+│   ├── useFadeUp.ts
+│   └── animationPresets.ts
+├── lib/
+│   └── ppdb/              # PPDB module
+│       ├── store.ts       # localStorage adapter
+│       ├── validator.ts   # pure validation functions
+│       └── index.ts       # barrel export
+├── pages/                 # halaman routing
 │   ├── Beranda.tsx
 │   ├── Profil.tsx
 │   ├── Jurusan.tsx
+│   ├── JurusanDetail.tsx
 │   ├── Fasilitas.tsx
-│   └── Berita.tsx
-├── types/           # shared TypeScript types
+│   ├── Berita.tsx
+│   ├── BeritaDetail.tsx
+│   └── Ppdb.tsx
+├── types/                 # shared TypeScript types
 │   ├── program.ts
 │   └── index.ts
-├── App.tsx          # routing entry
-├── index.css        # tailwind + design tokens
-└── main.tsx         # app entry
+├── App.tsx                # routing entry
+├── index.css              # tailwind + design tokens
+└── main.tsx               # app entry
 ```
 
 ## Design
