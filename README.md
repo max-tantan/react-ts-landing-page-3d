@@ -12,7 +12,8 @@ Website profil sekolah untuk SMK YADIKA SOREANG — sebuah sekolah kejuruan di S
 | **Tailwind CSS 4** | Utility styling |
 | **Framer Motion 12** | Animasi scroll-reveal |
 | **React Router 7** | Routing |
-| **OGL** | WebGL gallery (CircularGallery) |
+| **i18next** | Internasionalisasi (id/en) |
+| **OGL** | WebGL (CircularGallery, SoftAurora) |
 | **react-icons** | Icon library |
 
 ## Development
@@ -27,6 +28,10 @@ npm run lint     # ESLint
 ## Struktur
 
 ```
+public/
+├── favicon.svg            # SVG favicon
+├── icons.svg              # icon sprite
+└── brosur-ppdb.html       # standalone PPDB brochure
 src/
 ├── assets/                # static assets (gambar, logo, dll.)
 ├── components/
@@ -46,13 +51,18 @@ src/
 │   │   ├── CircularGallery.tsx
 │   │   ├── FadingVideo.tsx
 │   │   ├── GlareHover.tsx
+│   │   ├── LanguageSwitcher.tsx
 │   │   ├── Pagination.tsx
 │   │   ├── PrestasiCard.tsx
 │   │   ├── SoftAurora.tsx
-│   │   └── SpecimenLabel.tsx
+│   │   ├── SpecimenLabel.tsx
+│   │   └── ThemeSwitcher.tsx
 │   ├── ScrollToTop.tsx
 │   └── index.ts           # barrel export
-├── data/                  # static JSON data sources
+├── context/
+│   └── ThemeContext.tsx    # dark/light theme context
+├── data/                  # static JSON data + query layer
+│   ├── index.ts           # data access query functions
 │   ├── navigation.ts
 │   ├── berita.json
 │   ├── prestasi.json
@@ -62,11 +72,15 @@ src/
 ├── hooks/                 # custom hooks
 │   ├── useFadeUp.ts
 │   └── animationPresets.ts
+├── i18n.ts                # i18next configuration
 ├── lib/
 │   └── ppdb/              # PPDB module
 │       ├── store.ts       # localStorage adapter
 │       ├── validator.ts   # pure validation functions
 │       └── index.ts       # barrel export
+├── locales/
+│   ├── id/common.json     # Indonesian translations
+│   └── en/common.json     # English translations
 ├── pages/                 # halaman routing
 │   ├── Beranda.tsx
 │   ├── Profil.tsx
